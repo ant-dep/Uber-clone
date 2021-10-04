@@ -3,9 +3,13 @@ import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { GOOGLE_MAPS_APIsKEY } from "@env";
+import { GOOGLE_MAPS_APIKEY } from "@env";
+import { useDispatch } from "react-redux";
+import { setDestination, setOrigin } from "../slices/navSlice";
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
@@ -29,25 +33,26 @@ const HomeScreen = () => {
               backgroundColor: "#F5F5F5",
             },
           }}
-          fetchDetails={true}
+          fetchDetails={true} // use Redux dispatch to store coordinates
           onPress={(data, details = null) => {
-            dispatchAction(
+            dispatch(
               setOrigin({
                 location: details.geometry.location,
                 description: data.description,
               })
             );
 
-            dispatchAction(setDestination(null));
+            dispatch(setDestination(null));
           }}
-          placeholder="Pick a pick up point"
+          returnKeyType={"search"}
+          placeholder="Where to pick you up ?"
           query={{
-            key: GOOGLE_MAPS_APIsKEY,
+            key: GOOGLE_MAPS_APIKEY,
             language: "en",
           }}
           nearbyPlacesAPI="GooglePlacesSearch"
-          debounce={100}
-          enablePoweredByContainer={false}
+          debounce={400} // start searching every 400ms
+          enablePoweredByContainer={false} // hide the "Powered by Google"
         />
 
         <NavOptions />

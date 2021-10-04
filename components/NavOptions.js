@@ -4,7 +4,7 @@ import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
-// import { selectOrigin } from "../dataManagement/slices/navSlice";
+import { selectOrigin } from "../slices/navSlice";
 
 const data = [
   {
@@ -23,23 +23,21 @@ const data = [
 
 const NavOptions = () => {
   const navigation = useNavigation();
-  //   const origin = useSelector(selectOrigin);
+  const origin = useSelector(selectOrigin);
 
   return (
     <FlatList
       data={data}
-      horizontal // vertical by default
+      horizontal
       keyExtractor={(item) => item.id}
-      renderItem={(
-        { item } // for every item within data list, render it like:
-      ) => (
+      renderItem={({ item }) => (
         <TouchableOpacity
-          disabled={!origin}
+          disabled={!origin} // if no origin location given, disable it
           style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40 rounded-lg  `}
           onPress={() => navigation.navigate(item.screen)}
         >
           <View style={tw`${!origin && "opacity-20"}`}>
-            <Image
+            <Image // and change opacity
               style={{ width: 120, height: 120, resizeMode: "contain" }}
               source={{
                 uri: item.image,
