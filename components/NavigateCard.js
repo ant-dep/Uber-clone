@@ -22,6 +22,8 @@ const NavigateCard = () => {
   return (
     <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
       <Text style={tw`text-center py-5 text-xl`}>Hello Fellow!</Text>
+
+      {/* INPUT WITH GOOGLE AUTOCOMPLETE */}
       <View style={tw`border-t border-gray-200 flex-shrink`}>
         <View>
           <GooglePlacesAutocomplete
@@ -32,12 +34,14 @@ const NavigateCard = () => {
             returnKeyType={"search"}
             minLength={2}
             onPress={(data, details = null) => {
+              console.log(data.description);
+              console.log(details.geometry);
               dispatch(
                 setDestination({
                   location: details.geometry.location,
                   description: data.description,
                 })
-              );
+              ); // Update destination point and navigates to RideOptions Screen
               navigation.navigate("RideOptionsCard");
             }}
             query={{
@@ -48,15 +52,18 @@ const NavigateCard = () => {
             debounce={400}
           />
         </View>
+        {/* END OF INPUT WITH GOOGLE AUTOCOMPLETE */}
 
+        {/* FAVOUTIRES DESTINATION COMPONENTS */}
         <NavFavourites />
       </View>
 
+      {/* BOTTOM BUTTONS RIDE / EATS */}
       <View
         style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}
       >
         <TouchableOpacity
-          onPress={() => navigation.navigate("RideOptionsCard")}
+          onPress={() => navigation.navigate("RideOptionsCard")} // Also navigates to RideOption Screen
           style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
         >
           <Icon name="car" type="font-awesome" color="white" size={16} />
@@ -75,6 +82,7 @@ const NavigateCard = () => {
           <Text style={tw`text-center`}>Eats</Text>
         </TouchableOpacity>
       </View>
+      {/* ENF OF BOTTOM BUTTONS RIDE / EATS */}
     </SafeAreaView>
   );
 };

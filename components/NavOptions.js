@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
 import { selectOrigin } from "../slices/navSlice";
 
+// Main Options RIDE OR EATS on main page
 const data = [
   {
     id: "123",

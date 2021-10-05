@@ -14,6 +14,7 @@ export const navSlice = createSlice({
       state.origin = action.payload; // update the state with the action commin in named "payload"
     },
     setDestination: (state, action) => {
+      console.log("Destination payload", action.payload);
       state.destination = action.payload;
     },
     setTravelTimeInformation: (state, action) => {
