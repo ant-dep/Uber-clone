@@ -3,9 +3,9 @@
 <hr class="line"></br>
 
 👇 <em>Result here</em>👇 </br>
-https://signal-clone-565f2.web.app
+https://uber-clone-18c94.web.app
 
-<a href="https://expo.dev/@lhimiko/Signal-clone">Or via <strong>Expo</strong></a>
+<a href="https://expo.dev/@lhimiko/Uber-clone">Or via <strong>Expo</strong></a>
 
 </br></br></br>
 
@@ -29,4 +29,4 @@ https://signal-clone-565f2.web.app
 
 <hr class="line"></br></br></br>
 
-| <img src="https://github.com/lHimiko/Signal-clone/blob/master/Sample%20UI/Signal_main-page.png?raw=true" alt="front page" width="120"> | <img src="https://github.com/lHimiko/Signal-clone/blob/master/Sample%20UI/Signal_register-page.png?raw=true" alt="Register page" width="120"> | <img src="https://github.com/lHimiko/Signal-clone/blob/master/Sample%20UI/Signal_chat-page.png?raw=true" alt="chat page" width="120"> | <img src="https://github.com/lHimiko/Signal-clone/blob/master/Sample%20UI/Signal_chat-list-page.png?raw=true" alt="chat list page" width="120">
+| <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/HomeScreen-page.png?raw=true" alt="Home page" width="180"> | <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Destination-choice-page.png?raw=true" alt="Destination Choice page" width="180"> | <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Car-choice-page.png?raw=true" alt="Car options page" width="180"> | <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Confirmation-page.png?raw=true" alt="Confirmation page" width="180">

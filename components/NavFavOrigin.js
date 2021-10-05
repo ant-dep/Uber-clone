@@ -52,7 +52,7 @@ const NavFavOrigin = () => {
               ); // Update destination point and navigates to RideOptions Screen
             navigation.navigate("MapScreen");
           }}
-          style={tw`flex-row items-center p-5`}
+          style={tw`flex-row items-center py-5`}
         >
           <Icon
             style={tw`mr-4 rounded-full bg-gray-300 p-3`}

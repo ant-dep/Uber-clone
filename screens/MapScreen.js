@@ -15,6 +15,8 @@ const MapScreen = () => {
 
   return (
     <View>
+      {/* HALF SCREEN TOP */}
+      {/* BURGER ROUNDED BUTTON ON TOP */}
       <TouchableOpacity
         onPress={() => navigation.navigate("HomeScreen")}
         style={[
@@ -24,9 +26,12 @@ const MapScreen = () => {
         <Icon name="menu" />
       </TouchableOpacity>
 
+      {/* MAP */}
       <View style={tw`h-1/2`}>
         <Map />
       </View>
+
+      {/* HALF SCREEN BOTTOM */}
       <View style={tw`h-1/2`}>
         <Stack.Navigator>
           <Stack.Screen

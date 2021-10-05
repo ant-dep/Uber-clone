@@ -33,11 +33,11 @@ const NavOptions = () => {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
         <TouchableOpacity
-          disabled={!origin} // if no origin location given, disable it
+          disabled={item.id === "123" && !origin} // if no origin location given, disable it
           style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40 rounded-lg  `}
-          onPress={() => navigation.navigate(item.screen)}
+          onPress={() => navigation.navigate("EatsScreen")}
         >
-          <View style={tw`${!origin && "opacity-20"}`}>
+          <View style={tw`${item.id === "123" && "opacity-20"}`}>
             <Image // and change opacity
               style={{ width: 120, height: 120, resizeMode: "contain" }}
               source={{
