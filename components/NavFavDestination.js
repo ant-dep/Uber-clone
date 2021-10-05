@@ -29,7 +29,7 @@ const data = [
   },
 ];
 
-const NavFavourites = () => {
+const NavFavDestination = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -71,6 +71,6 @@ const NavFavourites = () => {
   );
 };
 
-export default NavFavourites;
+export default NavFavDestination;
 
 const styles = StyleSheet.create({});

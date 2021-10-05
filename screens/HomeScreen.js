@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
+import NavOptions from "../components/NavOptions";
+import NavFavOrigin from "../components/NavFavOrigin";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const [visible, setvisible] = useState(false);
 
+  // 2.5 sec Loader
   useEffect(() => {
     setTimeout(() => {
       setvisible(true);
@@ -83,6 +85,7 @@ const HomeScreen = () => {
           />
 
           <NavOptions />
+          <NavFavOrigin />
         </View>
       )}
     </SafeAreaView>

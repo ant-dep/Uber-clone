@@ -25,28 +25,32 @@ const RideOptionsCard = () => {
   const data = [
     {
       id: "Uber-X-123",
-      title: "UberX",
+      title: "Uber X",
       multiplier: 1,
       image: "https://links.papareact.com/3pn",
+      capacity: "1 - 3",
     },
     {
       id: "Uber-GREEN-456",
-      title: "UberGreen",
+      title: "Uber Green",
       multiplier: 1,
       image:
         "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_956/v1599010311/assets/00/4c6379-7586-4d55-9fe6-8170b18260d1/original/Product-Icon-2.jpg",
+      capacity: "1 - 3",
     },
     {
       id: "Uber-XL-789",
       title: "Uber XL",
       multiplier: 1.2,
       image: "https://links.papareact.com/5w8",
+      capacity: "1 - 5",
     },
     {
       id: "Uber-LUX-101112",
       title: "Uber LUX",
       multiplier: 1.75,
       image: "https://links.papareact.com/7pf",
+      capacity: "1 - 2",
     },
   ];
 
@@ -64,6 +68,7 @@ const RideOptionsCard = () => {
         </Text>
       </View>
 
+      {/* FOR EACH OPTIONS? RENDER : */}
       <FlatList
         data={data}
         renderItem={({ item: { id, title, multiplier, image }, item }) => (
@@ -71,8 +76,12 @@ const RideOptionsCard = () => {
             onPress={() => setSelected(item)}
             style={tw`flex-row justify-between items-center px-10 ${
               id === selected?.id && "bg-gray-200"
+            } ${
+              id === selected?.id && id === "Uber-GREEN-456" && "bg-green-100"
+              // if selected, give grey background or green for Uber Green
             }`}
           >
+            {/* CAR OPTION LOGO */}
             <Image
               style={{
                 width: 100,
@@ -81,10 +90,13 @@ const RideOptionsCard = () => {
               }}
               source={{ uri: image }}
             />
+            {/* OPTION TITLE + TRAVEL DURATION FROM MAP.JS (through redux dispatch)*/}
             <View style={tw`-ml-6`}>
               <Text style={tw`text-lg font-semibold`}>{title}</Text>
               <Text>{travelTimeInformation?.duration.text}</Text>
             </View>
+
+            {/* DYNAMIC PRICE WITH TRAVEL TIME FROM MAP.JS (through redux dispatch) */}
             <Text style={tw`text-lg`}>
               {new Intl.NumberFormat("en-us", {
                 style: "currency",
@@ -102,6 +114,22 @@ const RideOptionsCard = () => {
       />
 
       <View style={tw`mt-auto border-t border-gray-200`}>
+        <TouchableOpacity
+          style={tw`flex flex-row items-center justify-between px-4 pt-3`}
+        >
+          <View style={tw`flex flex-row items-center justify-between`}>
+            <Icon name="cc-visa" type="font-awesome" />
+            <Text style={tw`ml-2`}>**** 1234</Text>
+          </View>
+          <View style={tw`flex flex-row items-center justify-between`}>
+            <Icon name="person-outline" type="ionicons" />
+            <Text style={tw`ml-2`}>{selected?.capacity}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* FOR EACH OPTIONS? RENDER / */}
+      <View>
         <TouchableOpacity
           disabled={!selected}
           style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}

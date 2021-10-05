@@ -12,7 +12,7 @@ import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import NavFavourites from "./NavFavourites";
+import NavFavDestination from "./NavFavDestination";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 
 const NavigateCard = () => {
@@ -55,7 +55,7 @@ const NavigateCard = () => {
         {/* END OF INPUT WITH GOOGLE AUTOCOMPLETE */}
 
         {/* FAVOUTIRES DESTINATION COMPONENTS */}
-        <NavFavourites />
+        <NavFavDestination />
       </View>
 
       {/* BOTTOM BUTTONS RIDE / EATS */}

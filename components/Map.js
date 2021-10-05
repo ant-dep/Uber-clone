@@ -17,6 +17,7 @@ const Map = () => {
   const destination = useSelector(selectDestination);
   const dispatch = useDispatch();
 
+  // MARKERS SETTINGS AND ZOOM OUT FEATURE
   useEffect(() => {
     if (!origin || !destination) return;
 
@@ -26,6 +27,7 @@ const Map = () => {
     });
   }, [origin, destination]);
 
+  // TIME CALCULATION VIA GOOGLE API
   useEffect(() => {
     const getTravelTime = async () => {
       if (!origin || !destination) return;
@@ -75,6 +77,7 @@ const Map = () => {
           title="Origin"
           description={origin.description}
           identifier="origin"
+          image={require("../assets/uber-marker-icon.png")} // Uber Icon. only local works
         />
       )}
 
@@ -87,6 +90,7 @@ const Map = () => {
           title="Destination"
           description={destination.description}
           identifier="destination"
+          image={require("../assets/uber-marker-icon.png")}
         />
       )}
     </MapView>
