@@ -12,12 +12,14 @@ import tw from "tailwind-react-native-classnames";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { selectTravelTimeInformation } from "../slices/navSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCar } from "../slices/navSlice";
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState(null);
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
+  const dispatch = useDispatch();
 
   // If we have SURGE pricing, this goes up
   const SURGE_CHARGE_RATE = 1.5;
@@ -71,7 +73,10 @@ const RideOptionsCard = () => {
       {/* FOR EACH OPTIONS? RENDER : */}
       <FlatList
         data={data}
-        renderItem={({ item: { id, title, multiplier, image }, item }) => (
+        renderItem={({
+          item: { id, title, multiplier, image, capacity },
+          item,
+        }) => (
           <TouchableOpacity
             onPress={() => setSelected(item)}
             style={tw`flex-row justify-between items-center px-10 ${
@@ -128,11 +133,22 @@ const RideOptionsCard = () => {
         </TouchableOpacity>
       </View>
 
-      {/* FOR EACH OPTIONS? RENDER / */}
+      {/* FOR EACH OPTIONS RENDER : */}
       <View>
         <TouchableOpacity
           disabled={!selected}
           style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
+          onPress={() => {
+            dispatch(
+              setCar({
+                title: selected.title,
+                multiplier: selected.multiplier,
+                image: selected.image,
+                capacity: selected.capacity,
+              })
+            );
+            navigation.navigate("NavigationConfirmation");
+          }}
         >
           <Text style={tw`text-center text-white text-xl`}>
             Choose {selected?.title}

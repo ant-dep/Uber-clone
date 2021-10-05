@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import RideOptionsCard from "../components/RideOptionsCard";
 import Map from "../components/Map";
 import { useNavigation } from "@react-navigation/native";
+import NavigationConfirmation from "../components/NavigationConfirmation";
 
 const MapScreen = () => {
   const Stack = createStackNavigator();
@@ -38,6 +39,13 @@ const MapScreen = () => {
           <Stack.Screen
             name="RideOptionsCard"
             component={RideOptionsCard}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="NavigationConfirmation"
+            component={NavigationConfirmation}
             options={{
               headerShown: false,
             }}
