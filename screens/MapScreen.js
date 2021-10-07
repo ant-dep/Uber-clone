@@ -2,12 +2,12 @@ import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { Icon } from "react-native-elements/dist/icons/Icon";
-import NavigateCard from "../components/NavigateCard";
+import NavigateCard from "../DriveComponents/NavigateCard";
 import { createStackNavigator } from "@react-navigation/stack";
-import RideOptionsCard from "../components/RideOptionsCard";
-import Map from "../components/Map";
+import RideOptionsCard from "../DriveComponents/RideOptionsCard";
+import Map from "../DriveComponents/Map";
 import { useNavigation } from "@react-navigation/native";
-import NavigationConfirmation from "../components/NavigationConfirmation";
+import NavigationConfirmation from "../DriveComponents/NavigationConfirmation";
 
 const MapScreen = () => {
   const Stack = createStackNavigator();

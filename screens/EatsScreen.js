@@ -3,23 +3,18 @@ import React from "react";
 import { TouchableOpacity, Text, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { Icon } from "react-native-elements";
+import HeaderTabs from "../EatsComponents/HeaderTabs";
+import { SafeAreaView } from "react-native";
 
 const EatsScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={tw`flex flex-1 justify-center items-center`}>
-      {/* BURGER ROUNDED BUTTON ON TOP */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate("HomeScreen")}
-        style={[
-          tw`bg-gray-100 absolute top-16 left-8 z-50 p-3 rounded-full shadow-lg`,
-        ]}
-      >
-        <Icon name="menu" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
-        <Text style={tw`text-gray-400 italic text-lg`}>Comming Soon</Text>
+    <View style={tw`flex justify-center items-center`}>
+      <TouchableOpacity>
+        <SafeAreaView>
+          <HeaderTabs />
+        </SafeAreaView>
       </TouchableOpacity>
     </View>
   );

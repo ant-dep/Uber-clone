@@ -79,7 +79,12 @@ const NavigateCard = () => {
             color="black"
             size={16}
           />
-          <Text style={tw`text-center`}>Eats</Text>
+          <Text
+            onPress={() => navigation.navigate("EatsScreen")}
+            style={tw`text-center`}
+          >
+            Eats
+          </Text>
         </TouchableOpacity>
       </View>
       {/* ENF OF BOTTOM BUTTONS RIDE / EATS */}

@@ -17,8 +17,8 @@ https://uber-clone-18c94.web.app
 
 <h2>FEATURES</h2></br>
 
-👉 <em>React Native</em>
-👉 <em>Expo</em>
+👉 <em>React Native</em></br>
+👉 <em>Expo</em></br>
 👉 <em>React Native</em> native elements, navigation and maps</br>
 👉 <em>Redux</em></br>
 👉 <em>Tailwind Css</em></br>
