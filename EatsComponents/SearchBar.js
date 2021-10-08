@@ -4,11 +4,18 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import tw from "tailwind-react-native-classnames";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { GOOGLE_MAPS_APIKEY } from "@env";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   return (
     <View style={tw`mt-7 flex-row`}>
       <GooglePlacesAutocomplete
+        query={{ key: GOOGLE_MAPS_APIKEY }}
+        onPress={(data, details = null) => {
+          console.log(data.description);
+          const city = data.description.split(",")[0]; // keep the first item (the city name)
+          props.cityHandler(city);
+        }}
         placeholder="Search"
         styles={{
           textInput: tw`bg-gray-200 rounded-2xl font-semibold mt-0.5`,

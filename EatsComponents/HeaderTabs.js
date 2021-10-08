@@ -3,24 +3,22 @@ import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 import tw from "tailwind-react-native-classnames";
 
-const HeaderTabs = () => {
-  const [activeTab, setActiveTab] = useState("Delivery");
-
+const HeaderTabs = (props) => {
   return (
     <View style={tw`flex-row justify-center items-center`}>
       <HeaderButton
         text="Delivery"
         btnColor="bg-black"
         textColor="text-white"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
       />
       <HeaderButton
         text="Pickup"
         btnColor="bg-white"
         textColor="text-black"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
       />
     </View>
   );
