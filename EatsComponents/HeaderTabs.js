@@ -7,7 +7,7 @@ const HeaderTabs = () => {
   const [activeTab, setActiveTab] = useState("Delivery");
 
   return (
-    <View style={tw`flex-row items-center`}>
+    <View style={tw`flex-row justify-center items-center`}>
       <HeaderButton
         text="Delivery"
         btnColor="bg-black"

@@ -35,7 +35,7 @@ const NavOptions = () => {
         <TouchableOpacity
           disabled={item.id === "123" && !origin} // if no origin location given, disable it
           style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40 rounded-lg  `}
-          onPress={() => navigation.navigate("EatsScreen")}
+          onPress={() => navigation.navigate(item.screen)}
         >
           <View style={tw`${item.id === "123" && "opacity-20"}`}>
             <Image // and change opacity
