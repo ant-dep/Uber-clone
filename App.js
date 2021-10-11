@@ -1,7 +1,7 @@
 import React from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./slices/store";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -9,6 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./screens/HomeScreen";
 import MapScreen from "./screens/MapScreen";
 import EatsScreen from "./screens/EatsScreen";
+import RestaurantDetailsScreen from "./screens/RestaurantDetailsScreen";
 
 import "react-native-gesture-handler";
 
@@ -38,6 +39,11 @@ export default function App() {
               <Stack.Screen
                 name="EatsScreen"
                 component={EatsScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="RestaurantDetailsScreen"
+                component={RestaurantDetailsScreen}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

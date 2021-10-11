@@ -5,6 +5,7 @@ const initialState = {
   destination: null,
   travelTimeInformation: null,
   car: null,
+  cart: { items: [], restaurantName: "" },
 };
 
 export const navSlice = createSlice({
@@ -25,11 +26,38 @@ export const navSlice = createSlice({
     setCar: (state, action) => {
       state.car = action.payload;
     },
+    setCart: (state = initialState.cart, action) => {
+      let newState = { ...state };
+
+      if (action.payload.payload.checkboxValue) {
+        newState.cart = {
+          items: [...newState.cart.items, action.payload.payload],
+          restaurantName: action.payload.payload.restaurantName,
+        };
+      } else {
+        newState.cart = {
+          items: [
+            ...newState.cart.items.filter(
+              (item) => item.title !== action.payload.payload.title
+            ),
+          ],
+          restaurantName: action.payload.payload.restaurantName,
+        };
+      }
+
+      console.log(newState, "👉");
+      return newState;
+    },
   },
 });
 
-export const { setOrigin, setDestination, setTravelTimeInformation, setCar } =
-  navSlice.actions;
+export const {
+  setOrigin,
+  setDestination,
+  setTravelTimeInformation,
+  setCar,
+  setCart,
+} = navSlice.actions;
 
 // selectors
 export const selectOrigin = (state) => state.nav.origin;
@@ -37,6 +65,7 @@ export const selectDestination = (state) => state.nav.destination;
 export const selectTravelTimeInformation = (state) =>
   state.nav.travelTimeInformation;
 export const selectCar = (state) => state.nav.car;
+export const selectCart = (state) => state.nav.cart;
 
 //*  createSlice will return an object that looks like:
 // {
