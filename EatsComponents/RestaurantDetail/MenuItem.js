@@ -44,8 +44,8 @@ const foods = [
   },
   {
     id: "KKD5",
-    title: "Lasagna",
-    description: "With butter lettuce, tomato and sauce bechamel",
+    title: "Vegan Lasagna",
+    description: "With lettuce, tomato and tofu",
     price: 16.5,
     image:
       "https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg",
@@ -82,7 +82,7 @@ export default function MenuItem({ restaurantName }) {
   const items = useSelector(selectCart);
   const cartItems = items.items;
   const isFoodInCart = (food, cartItems) =>
-    Boolean(cartItems.find((item) => item.title === food.title)); // return a boolean if the item id Checked or not
+    Boolean(cartItems.find((item) => item.id === food.id)); // return a boolean if the item id Checked or not
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

@@ -13,7 +13,7 @@ import BottomTabs from "../EatsComponents/Home/BottomTabs";
 import { YELP_APIKEY } from "@env";
 import { Divider } from "react-native-elements/dist/divider/Divider";
 
-const EatsScreen = () => {
+const EatsScreen = ({ navigation }) => {
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
   const origin = useSelector(selectOrigin);
   const [city, setCity] = useState(origin ? origin.description : "Miami Beach"); // Checks if there is an origin city or display Miami by default ;)
@@ -59,7 +59,10 @@ const EatsScreen = () => {
       </View>
       <ScrollView vertical showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantData={restaurantData} />
+        <RestaurantItems
+          restaurantData={restaurantData}
+          navigation={navigation}
+        />
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />
