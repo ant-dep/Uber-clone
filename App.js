@@ -10,8 +10,7 @@ import HomeScreen from "./screens/HomeScreen";
 import MapScreen from "./screens/MapScreen";
 import EatsScreen from "./screens/EatsScreen";
 import RestaurantDetailsScreen from "./screens/RestaurantDetailsScreen";
-
-import "react-native-gesture-handler";
+import OrderCompletedScreen from "./screens/OrderCompletedScreen";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -44,6 +43,11 @@ export default function App() {
               <Stack.Screen
                 name="RestaurantDetailsScreen"
                 component={RestaurantDetailsScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="OrderCompletedScreen"
+                component={OrderCompletedScreen}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

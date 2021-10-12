@@ -4,8 +4,9 @@ import tw from "tailwind-react-native-classnames";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../slices/navSlice";
 import OrderItem from "./OrderItem";
+import firebase from "../../firebase";
 
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const items = useSelector(selectCart);
@@ -22,6 +23,17 @@ export default function ViewCart() {
 
   const totalUSD = formatter.format(total);
 
+  const addOrderToFireBase = () => {
+    const db = firebase.firestore();
+    db.collection("orders").add({
+      items: cartItems,
+      restaurantName: restaurantName,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setModalVisible(false);
+    navigation.navigate("OrderCompletedScreen");
+  };
+
   const checkoutModalContent = () => {
     return (
       <TouchableOpacity
@@ -32,7 +44,7 @@ export default function ViewCart() {
           <Text style={tw`text-center font-semibold text-lg my-2`}>
             {restaurantName}
           </Text>
-          {cartItems.map((item, index) => (
+          {cartItems?.map((item, index) => (
             <OrderItem key={index} item={item} />
           ))}
           <View style={tw`flex-row justify-between w-full px-2 mt-4`}>
@@ -42,7 +54,9 @@ export default function ViewCart() {
           <View style={tw`flex-row justify-center absolute bottom-10`}>
             <TouchableOpacity
               style={tw`mt-3 bg-black flex-row justify-around items-center px-5 py-2 rounded-3xl w-72`}
-              onPress={() => setModalVisible(false)}
+              onPress={() => {
+                addOrderToFireBase();
+              }}
             >
               <Text style={tw`text-white text-lg font-semibold`}>Checkout</Text>
               <Text style={tw`text-white`}>-</Text>
