@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -36,6 +36,7 @@ export const localRestaurants = [
 ];
 
 export default function RestaurantItems(props) {
+  const [loved, setLoved] = useState(false);
   const navigation = useNavigation();
 
   return (
@@ -45,6 +46,7 @@ export default function RestaurantItems(props) {
           key={index}
           activeOpacity={1}
           style={tw`mb-1`}
+          isloved={loved}
           onPress={() =>
             navigation.navigate("RestaurantDetailsScreen", {
               name: restaurant.name,
@@ -57,7 +59,10 @@ export default function RestaurantItems(props) {
           }
         >
           <View style={tw`mt-2 p-3 bg-white`}>
-            <RestaurantImage image={restaurant.image_url} />
+            <RestaurantImage
+              image={restaurant.image_url}
+              onPress={() => setLoved(true)}
+            />
             <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
           </View>
         </TouchableOpacity>
@@ -69,8 +74,17 @@ export default function RestaurantItems(props) {
 const RestaurantImage = (props) => (
   <>
     <Image source={{ uri: props.image }} style={tw`w-full h-36`} />
-    <TouchableOpacity style={{ position: "absolute", right: 20, top: 20 }}>
-      <MaterialCommunityIcons name="heart-outline" size={25} color="white" />
+    <TouchableOpacity style={tw`absolute top-5 right-5 z-50`}>
+      {props.isLoved ? (
+        <MaterialCommunityIcons
+          name="heart-outline"
+          size={25}
+          color="white"
+          fill="red"
+        />
+      ) : (
+        <MaterialCommunityIcons name="heart-outline" size={25} color="white" />
+      )}
     </TouchableOpacity>
   </>
 );
@@ -78,7 +92,9 @@ const RestaurantInfo = (props) => (
   <View style={tw`flex-row justify-between items-center mt-3`}>
     <View>
       <Text style={{ fontSize: 15, fontWeight: "bold" }}>{props.name}</Text>
-      <Text style={{ fontSize: 13, color: "gray" }}>Time</Text>
+      <Text style={{ fontSize: 13, color: "gray", marginTop: 5 }}>
+        20 - 30mn
+      </Text>
     </View>
     <View
       style={{

@@ -48,8 +48,8 @@ export const navSlice = createSlice({
       console.log(newState, "👉");
       return newState;
     },
-    resetCart: (state = initialState.cart, action) => {
-      state.cart = action.payload;
+    resetCart: (state) => {
+      state.cart = { items: [], restaurantName: "" };
     },
   },
 });

@@ -49,8 +49,7 @@ const NavFavOrigin = () => {
                   location: geometry,
                   description: destination,
                 })
-              ); // Update destination point and navigates to RideOptions Screen
-            navigation.navigate("MapScreen");
+              ); // Update destination point
           }}
           style={tw`flex-row items-center py-5`}
         >

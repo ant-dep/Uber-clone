@@ -65,7 +65,7 @@ const EatsScreen = ({ navigation }) => {
         />
       </ScrollView>
       <Divider width={1} />
-      <BottomTabs />
+      <BottomTabs navigation={navigation} />
     </SafeAreaView>
   );
 };

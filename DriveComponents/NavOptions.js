@@ -33,11 +33,11 @@ const NavOptions = () => {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
         <TouchableOpacity
-          disabled={item.id === "123" && !origin} // if no origin location given, disable it
+          disabled={!origin} // if no origin location given, disable it
           style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40 rounded-lg  `}
           onPress={() => navigation.navigate(item.screen)}
         >
-          <View style={tw`${item.id === "123" && !origin && "opacity-20"}`}>
+          <View style={tw`${!origin && "opacity-20"}`}>
             <Image // and change opacity
               style={{ width: 120, height: 120, resizeMode: "contain" }}
               source={{
