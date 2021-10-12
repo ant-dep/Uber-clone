@@ -8,7 +8,7 @@ import { GOOGLE_MAPS_APIKEY } from "@env";
 
 export default function SearchBar(props) {
   return (
-    <View style={tw`mt-7 flex-row`}>
+    <View style={tw`mt-5 flex-row`}>
       <GooglePlacesAutocomplete
         query={{ key: GOOGLE_MAPS_APIKEY }}
         onPress={(data, details = null) => {
@@ -18,8 +18,8 @@ export default function SearchBar(props) {
         }}
         placeholder="Search"
         styles={{
-          textInput: tw`bg-gray-200 rounded-2xl font-semibold mt-0.5`,
-          textInputContainer: tw`bg-gray-200 rounded-full flex-row items-center mr-2`,
+          textInput: tw`bg-gray-200 rounded-2xl font-semibold m-0`,
+          textInputContainer: tw`bg-gray-200 rounded-full flex-row items-center mr-1`,
         }}
         renderLeftButton={() => (
           <View style={tw`ml-2`}>

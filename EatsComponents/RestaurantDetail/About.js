@@ -8,9 +8,7 @@ export default function About(props) {
 
   const formattedCategories = categories.map(({ title }) => title).join(" • ");
   const descriptionTop = `${formattedCategories}`;
-  const descriptionBottom = `${
-    price ? " • " + price : ""
-  } • 🎫 • ${rating} ⭐ (${reviews}+)`;
+  const descriptionBottom = `🎫 • ${rating} ⭐ (${reviews}+)`;
 
   return (
     <View>

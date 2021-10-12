@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 import tw from "tailwind-react-native-classnames";
 
@@ -44,4 +44,3 @@ const HeaderButton = (props) => (
     </TouchableOpacity>
   </View>
 );
-const styles = StyleSheet.create({});

@@ -18,6 +18,7 @@ const EatsScreen = ({ navigation }) => {
   const origin = useSelector(selectOrigin);
   const [city, setCity] = useState(origin ? origin.description : "Miami Beach"); // Checks if there is an origin city or display Miami by default ;)
   const [activeTab, setActiveTab] = useState("Delivery");
+  const [activeMenu, setActiveMenu] = useState("Home");
 
   const getRestaurantsFromYelp = () => {
     const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
@@ -49,7 +50,7 @@ const EatsScreen = ({ navigation }) => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "#eee",
+        backgroundColor: "white",
         paddingTop: Platform.OS === "android" ? 25 : 0,
       }}
     >
@@ -57,7 +58,11 @@ const EatsScreen = ({ navigation }) => {
         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <SearchBar cityHandler={setCity} />
       </View>
-      <ScrollView vertical showsVerticalScrollIndicator={false}>
+      <ScrollView
+        vertical
+        showsVerticalScrollIndicator={false}
+        style={{ backgroundColor: "#eee" }}
+      >
         <Categories />
         <RestaurantItems
           restaurantData={restaurantData}
@@ -65,7 +70,11 @@ const EatsScreen = ({ navigation }) => {
         />
       </ScrollView>
       <Divider width={1} />
-      <BottomTabs navigation={navigation} />
+      <BottomTabs
+        navigation={navigation}
+        activeMenu={activeMenu}
+        setActiveMenu={setActiveMenu}
+      />
     </SafeAreaView>
   );
 };

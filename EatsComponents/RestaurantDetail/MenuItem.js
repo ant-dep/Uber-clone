@@ -31,15 +31,14 @@ export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
     <ScrollView showsVerticalScrollIndicator={false}>
       {foods.map((food, index) => (
         <View key={index}>
-          <View style={tw`flex-row justify-between my-5 px-2`}>
-            {hideCheckBox ? (
+          <View style={tw`flex-row justify-between my-5 pr-2 pl-5`}>
+            {hideCheckBox ? ( // checks if needs to hibe for OrderCompletedScreen
               <></>
             ) : (
               <BouncyCheckbox
                 iconStyle={{
                   borderColor: "lightgray",
                   borderRadius: 50,
-                  marginHorizontal: 5,
                 }}
                 fillColor="green"
                 onPress={(checkboxValue) => selectItem(food, checkboxValue)}
@@ -61,7 +60,7 @@ export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
 }
 
 const FoodInfo = (props) => (
-  <View style={{ width: 240, justifyContent: "space-evenly" }}>
+  <View style={{ width: 230, justifyContent: "space-evenly" }}>
     <Text style={tw`text-xl font-semibold`}>{props.food.title}</Text>
     <Text>{props.food.description}</Text>
     <Text>${props.food.price}</Text>

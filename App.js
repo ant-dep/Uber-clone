@@ -11,6 +11,8 @@ import MapScreen from "./screens/MapScreen";
 import EatsScreen from "./screens/EatsScreen";
 import RestaurantDetailsScreen from "./screens/RestaurantDetailsScreen";
 import OrderCompletedScreen from "./screens/OrderCompletedScreen";
+import OrdersScreen from "./screens/OrdersScreen";
+import AccountScreen from "./screens/AccountScreen";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -48,6 +50,16 @@ export default function App() {
               <Stack.Screen
                 name="OrderCompletedScreen"
                 component={OrderCompletedScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="OrdersScreen"
+                component={OrdersScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="AccountScreen"
+                component={AccountScreen}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

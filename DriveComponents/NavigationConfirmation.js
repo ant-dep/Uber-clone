@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  FlatList,
   Image,
   SafeAreaView,
   Text,
@@ -10,52 +9,18 @@ import {
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 import { selectCar, selectTravelTimeInformation } from "../slices/navSlice";
 
 import { useSelector } from "react-redux";
 
 const NavigationConfirmation = () => {
   const navigation = useNavigation();
-  const [selected, setSelected] = useState(null);
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
   const car = useSelector(selectCar);
   console.log(car);
 
   // If we have SURGE pricing, this goes up
   const SURGE_CHARGE_RATE = 1.5;
-
-  const data = [
-    {
-      id: "Uber-X-123",
-      title: "Uber X",
-      multiplier: 1,
-      image: "https://links.papareact.com/3pn",
-      capacity: "1 - 3",
-    },
-    {
-      id: "Uber-GREEN-456",
-      title: "Uber Green",
-      multiplier: 1,
-      image:
-        "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_956/v1599010311/assets/00/4c6379-7586-4d55-9fe6-8170b18260d1/original/Product-Icon-2.jpg",
-      capacity: "1 - 3",
-    },
-    {
-      id: "Uber-XL-789",
-      title: "Uber XL",
-      multiplier: 1.2,
-      image: "https://links.papareact.com/5w8",
-      capacity: "1 - 5",
-    },
-    {
-      id: "Uber-LUX-101112",
-      title: "Uber LUX",
-      multiplier: 1.75,
-      image: "https://links.papareact.com/7pf",
-      capacity: "1 - 2",
-    },
-  ];
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>

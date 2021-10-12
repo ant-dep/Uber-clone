@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 
 // Just to have someting on main page before any search
 export const localRestaurants = [
@@ -35,78 +35,72 @@ export const localRestaurants = [
   },
 ];
 
-export default function RestaurantItems(props) {
-  const [loved, setLoved] = useState(false);
+const RestaurantItem = ({ restaurantData }) => {
   const navigation = useNavigation();
 
-  return (
-    <>
-      {props.restaurantData.map((restaurant, index) => (
-        <TouchableOpacity
-          key={index}
-          activeOpacity={1}
-          style={tw`mb-1`}
-          isloved={loved}
-          onPress={() =>
-            navigation.navigate("RestaurantDetailsScreen", {
-              name: restaurant.name,
-              image: restaurant.image_url,
-              price: restaurant.price,
-              reviews: restaurant.review_count,
-              rating: restaurant.rating,
-              categories: restaurant.categories,
-            })
-          }
-        >
-          <View style={tw`mt-2 p-3 bg-white`}>
-            <RestaurantImage
-              image={restaurant.image_url}
-              onPress={() => setLoved(true)}
-            />
-            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
-          </View>
-        </TouchableOpacity>
-      ))}
-    </>
-  );
-}
+  const handlePress = (item) => {
+    navigation.navigate("RestaurantDetailsScreen", {
+      name: item.name,
+      image: item.image_url,
+      price: item.price,
+      reviews: item.review_count,
+      rating: item.rating,
+      categories: item.categories,
+    });
+  };
 
-const RestaurantImage = (props) => (
-  <>
-    <Image source={{ uri: props.image }} style={tw`w-full h-36`} />
-    <TouchableOpacity style={tw`absolute top-5 right-5 z-50`}>
-      {props.isLoved ? (
-        <MaterialCommunityIcons
-          name="heart-outline"
-          size={25}
-          color="white"
-          fill="red"
+  return (
+    <View style={tw`mt-2`}>
+      {restaurantData?.map((item, index) => (
+        <RestaurantItemCard
+          key={index}
+          item={item}
+          onPress={() => handlePress(item)}
         />
-      ) : (
-        <MaterialCommunityIcons name="heart-outline" size={25} color="white" />
-      )}
+      ))}
+    </View>
+  );
+};
+
+export default RestaurantItem;
+
+const RestaurantItemCard = ({ item, onPress }) => {
+  const [loved, setLoved] = useState(false);
+
+  return (
+    <TouchableOpacity style={tw`mx-4 mb-4 bg-white`} onPress={onPress}>
+      <Image source={{ uri: item.image_url }} style={tw`w-full h-60`} />
+      <TouchableOpacity
+        style={tw`absolute top-2 right-2`}
+        onPress={() => setLoved((e) => !e)}
+      >
+        <MaterialCommunityIcons
+          name={`${loved ? "heart" : "heart-outline"}`}
+          size={25}
+          color={`${loved ? "red" : "white"}`}
+        />
+      </TouchableOpacity>
+      <View style={tw`flex-row items-center mt-1 px-2 py-1`}>
+        <View style={tw`flex-grow`}>
+          <Text style={tw`font-bold text-lg`} numberOfLines={1}>
+            {item.name}
+          </Text>
+          <Text style={tw`pl-1 text-xs text-gray-700`}>$ 2.50 delivery</Text>
+          <View style={tw`flex-row items-center mt-1`}>
+            <MaterialCommunityIcons
+              name="clock-time-four"
+              size={13}
+              color="darkgrey"
+            />
+            <Text style={tw`text-xs text-gray-700`}> 20-30 min</Text>
+          </View>
+        </View>
+        <View
+          style={tw`w-8 h-8 justify-center items-center bg-gray-100 rounded-full`}
+        >
+          <Text style={tw`text-gray-600 text-xs`}>{item.rating}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
-  </>
-);
-const RestaurantInfo = (props) => (
-  <View style={tw`flex-row justify-between items-center mt-3`}>
-    <View>
-      <Text style={{ fontSize: 15, fontWeight: "bold" }}>{props.name}</Text>
-      <Text style={{ fontSize: 13, color: "gray", marginTop: 5 }}>
-        20 - 30mn
-      </Text>
-    </View>
-    <View
-      style={{
-        backgroundColor: "#eee",
-        height: 30,
-        width: 30,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 15,
-      }}
-    >
-      <Text>{props.rating}</Text>
-    </View>
-  </View>
-);
+  );
+};

@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { setOrigin } from "../slices/navSlice";
-import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import tw from "tailwind-react-native-classnames";
 
@@ -31,7 +30,6 @@ const data = [
 
 const NavFavOrigin = () => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   return (
     <FlatList
