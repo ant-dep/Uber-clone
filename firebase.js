@@ -1,7 +1,8 @@
 import * as firebase from "firebase";
+import { APIKEY } from "@env";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyACAXe3VplGQzPdW6Y7IQcYa5j9N5G75r8",
+  apiKey: APIKEY,
   authDomain: "uber-clone-18c94.firebaseapp.com",
   projectId: "uber-clone-18c94",
   storageBucket: "uber-clone-18c94.appspot.com",

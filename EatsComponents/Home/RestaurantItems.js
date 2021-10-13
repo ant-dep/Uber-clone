@@ -69,7 +69,7 @@ const RestaurantItemCard = ({ item, onPress }) => {
 
   return (
     <TouchableOpacity style={tw`mx-4 mb-4 bg-white`} onPress={onPress}>
-      <Image source={{ uri: item.image_url }} style={tw`w-full h-60`} />
+      <Image source={{ uri: item.image_url }} style={tw`w-full h-44`} />
       <TouchableOpacity
         style={tw`absolute top-2 right-2`}
         onPress={() => setLoved((e) => !e)}

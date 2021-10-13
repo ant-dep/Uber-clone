@@ -30,15 +30,19 @@ const EatsScreen = ({ navigation }) => {
     };
 
     return fetch(yelpUrl, apiOptions).then((res) =>
-      res.json().then((json) =>
-        setRestaurantData(
-          json.businesses.filter(
-            (
-              business // Filter depending wheter the active tab is
-            ) => business.transactions.includes(activeTab.toLowerCase())
-          )
-        )
-      )
+      res.json().then((json) => {
+        {
+          json.businesses.filter((business) =>
+            business.transactions.includes(activeTab.toLowerCase())
+          ) == ""
+            ? setRestaurantData(json.businesses)
+            : setRestaurantData(
+                json.businesses.filter((business) =>
+                  business.transactions.includes(activeTab.toLowerCase())
+                )
+              );
+        }
+      })
     );
   };
 

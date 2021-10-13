@@ -61,16 +61,16 @@ const RideOptionsCard = () => {
       <View>
         <TouchableOpacity
           onPress={() => navigation.navigate("NavigateCard")}
-          style={[tw`absolute top-3 left-5 z-50 p-3 rounded-full`]}
+          style={[tw`absolute top-1 left-4 z-50 p-3 rounded-full`]}
         >
           <Icon name="chevron-left" type="fontawesome" />
         </TouchableOpacity>
-        <Text style={tw`text-center py-5 text-xl`}>
+        <Text style={tw`text-center p-3 text-xl`}>
           Select a ride - {travelTimeInformation?.distance.text}
         </Text>
       </View>
 
-      {/* FOR EACH OPTIONS? RENDER : */}
+      {/* FOR EACH OPTIONS, RENDER : */}
       <FlatList
         data={data}
         renderItem={({
@@ -79,7 +79,7 @@ const RideOptionsCard = () => {
         }) => (
           <TouchableOpacity
             onPress={() => setSelected(item)}
-            style={tw`flex-row justify-between items-center px-10 ${
+            style={tw`flex-row justify-between items-center py-1 px-10 ${
               id === selected?.id && "bg-gray-200"
             } ${
               id === selected?.id && id === "Uber-GREEN-456" && "bg-green-100"
@@ -89,14 +89,14 @@ const RideOptionsCard = () => {
             {/* CAR OPTION LOGO */}
             <Image
               style={{
-                width: 100,
-                height: 100,
+                width: 80,
+                height: 80,
                 resizeMode: "contain",
               }}
               source={{ uri: image }}
             />
             {/* OPTION TITLE + TRAVEL DURATION FROM MAP.JS (through redux dispatch)*/}
-            <View style={tw`-ml-6`}>
+            <View style={tw`items-start w-32`}>
               <Text style={tw`text-lg font-semibold`}>{title}</Text>
               <Text>{travelTimeInformation?.duration.text}</Text>
             </View>
@@ -120,7 +120,7 @@ const RideOptionsCard = () => {
 
       <View style={tw`mt-auto border-t border-gray-200`}>
         <TouchableOpacity
-          style={tw`flex flex-row items-center justify-between px-4 pt-3`}
+          style={tw`flex flex-row items-center justify-between px-4 pt-2`}
         >
           <View style={tw`flex flex-row items-center justify-between`}>
             <Icon name="cc-visa" type="font-awesome" />
@@ -137,7 +137,7 @@ const RideOptionsCard = () => {
       <View>
         <TouchableOpacity
           disabled={!selected}
-          style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
+          style={tw`bg-black py-2 mt-3 mx-3 ${!selected && "bg-gray-300"}`}
           onPress={() => {
             dispatch(
               setCar({

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { GOOGLE_MAPS_APIKEY } from "@env";
+import { APIKEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
 import NavOptions from "../DriveComponents/NavOptions";
@@ -76,7 +76,7 @@ const HomeScreen = () => {
             returnKeyType={"search"}
             placeholder="Where to pick you up ?"
             query={{
-              key: GOOGLE_MAPS_APIKEY,
+              key: APIKEY,
               language: "en",
             }}
             nearbyPlacesAPI="GooglePlacesSearch"

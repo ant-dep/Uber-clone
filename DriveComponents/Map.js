@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Keyboard, StyleSheet } from "react-native";
+import { Keyboard } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import {
   setTravelTimeInformation,
 } from "../slices/navSlice";
 import tw from "tailwind-react-native-classnames";
-import { GOOGLE_MAPS_APIKEY } from "@env";
+import { APIKEY } from "@env";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -33,7 +33,7 @@ const Map = () => {
       if (!origin || !destination) return;
 
       fetch(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_APIKEY}`
+        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${APIKEY}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -42,7 +42,7 @@ const Map = () => {
     };
 
     getTravelTime();
-  }, [origin, destination, GOOGLE_MAPS_APIKEY]);
+  }, [origin, destination, `${APIKEY}`]);
 
   return (
     <MapView
@@ -62,7 +62,7 @@ const Map = () => {
         <MapViewDirections
           origin={origin.description}
           destination={destination.description}
-          apikey={GOOGLE_MAPS_APIKEY}
+          apikey={`${APIKEY}`}
           strokeWidth={3}
           strokeColor="black"
         />
@@ -98,5 +98,3 @@ const Map = () => {
 };
 
 export default Map;
-
-const styles = StyleSheet.create({});

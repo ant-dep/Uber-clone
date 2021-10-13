@@ -13,7 +13,7 @@ import tw from "tailwind-react-native-classnames";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import NavFavDestination from "./NavFavDestination";
-import { GOOGLE_MAPS_APIKEY } from "@env";
+import { APIKEY } from "@env";
 
 const NavigateCard = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const NavigateCard = () => {
               navigation.navigate("RideOptionsCard");
             }}
             query={{
-              key: GOOGLE_MAPS_APIKEY,
+              key: `${APIKEY}`,
               language: "en",
             }}
             nearbyPlacesAPI="GooglePlacesSearch"
