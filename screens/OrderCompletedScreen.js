@@ -7,6 +7,8 @@ import { selectCart, resetCart } from "../slices/navSlice";
 import LottieView from "lottie-react-native";
 import MenuItem from "../EatsComponents/RestaurantDetail/MenuItem";
 import firebase from "../firebase";
+import "intl";
+import "intl/locale-data/jsonp/en";
 
 export default function OrderCompletedScreen({ navigation }) {
   const [lastOrder, setLastOrder] = useState({
@@ -16,7 +18,7 @@ export default function OrderCompletedScreen({ navigation }) {
         title: "Lasagna",
         image: "https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg",
         description: "Yummi",
-        price: "$13.60",
+        price: 13.6,
       },
     ],
   });

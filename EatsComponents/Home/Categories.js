@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import { View, Text, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from "tailwind-react-native-classnames";
 
 export default function Categories() {
@@ -40,11 +41,15 @@ export default function Categories() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {items.map((item, index) => (
           <View key={index} style={tw`items-center mr-10`}>
-            <Image
-              source={item.image}
-              style={{ width: 50, height: 40, resizeMode: "contain" }}
-            />
-            <Text style={{ fontSize: 13, fontWeight: "900" }}>{item.text}</Text>
+            <TouchableOpacity>
+              <Image
+                source={item.image}
+                style={{ width: 50, height: 40, resizeMode: "contain" }}
+              />
+              <Text style={{ fontSize: 13, fontWeight: "900" }}>
+                {item.text}
+              </Text>
+            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>

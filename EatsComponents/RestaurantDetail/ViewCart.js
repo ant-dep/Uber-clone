@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Modal, ScrollView } from "react-native";
-import tw from "tailwind-react-native-classnames";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../slices/navSlice";
+import tw from "tailwind-react-native-classnames";
+import "intl";
+import "intl/locale-data/jsonp/en";
 import OrderItem from "./OrderItem";
 import firebase from "../../firebase";
 import LottieView from "lottie-react-native";
@@ -19,7 +21,7 @@ export default function ViewCart({ navigation }) {
     .map((item) => Number(item.price))
     .reduce((prev, curr) => prev + curr, 0);
 
-  let formatter = Intl.NumberFormat("en-US", {
+  let formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });

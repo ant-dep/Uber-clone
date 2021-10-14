@@ -3,8 +3,7 @@ import { View, Text, Image } from "react-native";
 import tw from "tailwind-react-native-classnames";
 
 export default function About(props) {
-  const { name, image, price, reviews, rating, categories } =
-    props.route.params;
+  const { name, image, reviews, rating, categories } = props.route.params;
 
   const formattedCategories = categories.map(({ title }) => title).join(" • ");
   const descriptionTop = `${formattedCategories}`;

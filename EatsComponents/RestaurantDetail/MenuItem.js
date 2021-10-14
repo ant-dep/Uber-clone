@@ -60,8 +60,8 @@ export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
 }
 
 const FoodInfo = (props) => (
-  <View style={{ width: 230, justifyContent: "space-evenly" }}>
-    <Text style={tw`text-xl font-semibold`}>{props.food.title}</Text>
+  <View style={{ width: 220, justifyContent: "space-evenly" }}>
+    <Text style={tw`text-xl font-bold`}>{props.food.title}</Text>
     <Text>{props.food.description}</Text>
     <Text>${props.food.price}</Text>
   </View>

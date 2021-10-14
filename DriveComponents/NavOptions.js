@@ -28,6 +28,7 @@ const NavOptions = () => {
 
   return (
     <FlatList
+      showsHorizontalScrollIndicator={false}
       data={data}
       horizontal
       keyExtractor={(item) => item.id}

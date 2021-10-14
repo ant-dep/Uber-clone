@@ -14,6 +14,8 @@ import { useState } from "react";
 import { selectTravelTimeInformation } from "../slices/navSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setCar } from "../slices/navSlice";
+import "intl";
+import "intl/locale-data/jsonp/en";
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();

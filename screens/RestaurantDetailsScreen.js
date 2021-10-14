@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Divider } from "react-native-elements";
+import { ScrollView, View } from "react-native";
 import About from "../EatsComponents/RestaurantDetail/About";
 import tw from "tailwind-react-native-classnames";
 import MenuItem from "../EatsComponents/RestaurantDetail/MenuItem";

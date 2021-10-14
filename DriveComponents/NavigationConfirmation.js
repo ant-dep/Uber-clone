@@ -10,8 +10,9 @@ import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import { useNavigation } from "@react-navigation/native";
 import { selectCar, selectTravelTimeInformation } from "../slices/navSlice";
-
 import { useSelector } from "react-redux";
+import "intl";
+import "intl/locale-data/jsonp/en";
 
 const NavigationConfirmation = () => {
   const navigation = useNavigation();
