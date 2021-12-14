@@ -11,7 +11,7 @@ https://uber-clone-18c94.web.app
 
 <h2>FRONTEND</h2></br>
 
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.apollo-formation.com%2Fwp-content%2Fuploads%2Freact-native-logo-1-216x250.png&f=1&nofb=1" width="100" alt="React Native logo">  <img src="https://javascript.tutorialhorizon.com/files/2016/06/redux-logo.png" width="100" alt="Redux logo">  <img src="https://symbols.getvecta.com/stencil_97/3_tailwind-css-icon.43c02f69bf.png" width="115" alt="Tailwind CSS logo"></br></br></br></br></br>
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.apollo-formation.com%2Fwp-content%2Fuploads%2Freact-native-logo-1-216x250.png&f=1&nofb=1" width="100" alt="React Native logo">  <img src="https://javascript.tutorialhorizon.com/files/2016/06/redux-logo.png" width="100" alt="Redux logo">  <img src="https://media.zeemly.com/zeemly/product/tailwind-css.png" width="115" alt="Tailwind CSS logo"></br></br></br></br></br>
 
 <hr class="line"></br>
 
@@ -37,8 +37,8 @@ https://uber-clone-18c94.web.app
 
 <hr class="line">
 
-<img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/HomeScreen-page.png?raw=true" alt="Home page" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Destination-choice-page.png?raw=true" alt="Destination Choice page" width="180"><img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Car-choice-page.png?raw=true" alt="Car options page" width="180"><img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Confirmation-page.png?raw=true" alt="Confirmation page" width="180">
+<img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/HomeScreen-page.png?raw=true" alt="Home page" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Destination-choice-page.png?raw=true" alt="Destination Choice page" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Car-choice-page.png?raw=true" alt="Car options page" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Confirmation-page.png?raw=true" alt="Confirmation page" width="180">
 
 </br>
 
-<img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/EatsScreen-page.png?raw=true" alt="Eats page" width="180"><img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Restaurant-page.png?raw=true" alt="Restaurant page" width="180"><img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/ViewCart-modal.png?raw=true" alt="ViewCart modal" width="180"><img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/OrderCompletedScreen-page.png?raw=true" alt="OrderCompletedScreen page" width="180">
+<img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/EatsScreen-page.png?raw=true" alt="Eats page" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Restaurant-page.png?raw=true" alt="Restaurant page" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/ViewCart-modal.png?raw=true" alt="ViewCart modal" width="180">  <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/OrderCompletedScreen-page.png?raw=true" alt="OrderCompletedScreen page" width="180">
