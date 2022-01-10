@@ -1,11 +1,11 @@
 import React from "react";
-import HomeScreen from "./screens/HomeScreen";
-import MapScreen from "./screens/MapScreen";
-import EatsScreen from "./screens/EatsScreen";
-import RestaurantDetailsScreen from "./screens/RestaurantDetailsScreen";
-import OrderCompletedScreen from "./screens/OrderCompletedScreen";
-import OrdersScreen from "./screens/OrdersScreen";
-import AccountScreen from "./screens/AccountScreen";
+import HomeScreen from "../screens/HomeScreen";
+import MapScreen from "../screens/MapScreen";
+import EatsScreen from "../screens/EatsScreen";
+import RestaurantDetailsScreen from "../screens/RestaurantDetailsScreen";
+import OrderCompletedScreen from "../screens/OrderCompletedScreen";
+import OrdersScreen from "../screens/OrdersScreen";
+import AccountScreen from "../screens/AccountScreen";
 import LogoutScreen from "../screens/LogoutScreen";
 
 const LoggedRoutes = () => {

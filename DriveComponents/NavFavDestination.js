@@ -72,5 +72,3 @@ const NavFavDestination = () => {
 };
 
 export default NavFavDestination;
-
-const styles = StyleSheet.create({});

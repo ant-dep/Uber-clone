@@ -1,10 +1,10 @@
 import React from "react";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
-import HomeScreen from "./screens/HomeScreen";
-import MapScreen from "./screens/MapScreen";
-import EatsScreen from "./screens/EatsScreen";
-import RestaurantDetailsScreen from "./screens/RestaurantDetailsScreen";
+import LoginScreen from "../screens/LoginScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import HomeScreen from "../screens/HomeScreen";
+import MapScreen from "../screens/MapScreen";
+import EatsScreen from "../screens/EatsScreen";
+import RestaurantDetailsScreen from "../screens/RestaurantDetailsScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const NotLoggedRoutes = () => {

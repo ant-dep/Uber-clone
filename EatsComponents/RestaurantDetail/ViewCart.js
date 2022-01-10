@@ -15,8 +15,9 @@ export default function ViewCart({ navigation }) {
 
   // GET ITEMS SELECTED
   const cartItems = useSelector(selectCart);
-  const restaurantName = items.restaurantName;
-  const total = cartItems
+  console.log("cartItems", cartItems);
+
+  const total = cartItems.items
     .map((item) => Number(item.price))
     .reduce((prev, curr) => prev + curr, 0);
 
@@ -33,8 +34,8 @@ export default function ViewCart({ navigation }) {
     const db = firebase.firestore();
     db.collection("orders")
       .add({
-        items: cartItems,
-        restaurantName: restaurantName,
+        items: cartItems.items,
+        restaurantName: cartItems.restaurantName,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
@@ -58,12 +59,12 @@ export default function ViewCart({ navigation }) {
         {/* CART MODAL */}
         <View style={tw`bg-white p-1 h-3/5 items-center border relative`}>
           <Text style={tw`text-center font-semibold text-lg my-2`}>
-            {restaurantName}
+            {cartItems.restaurantName}
           </Text>
 
           {/* SCROLLABLE ITEMS AND TOTAL */}
           <ScrollView style={tw`w-full`} showsHorizontalScrollIndicator={false}>
-            {cartItems?.map((item, index) => (
+            {cartItems?.items?.map((item, index) => (
               <OrderItem key={index} item={item} />
             ))}
             <View style={tw`flex-row justify-between w-full px-2 mt-4`}>
@@ -105,7 +106,7 @@ export default function ViewCart({ navigation }) {
       </Modal>
       {total ? ( // IF there's something checked, show the button
         <View
-          style={tw`flex-1 items-center justify-center flex-row absolute bottom-28 z-20`}
+          style={tw`flex-1 items-center justify-center flex-row absolute bottom-96 z-20`}
         >
           <View style={tw`flex-row justify-center w-full`}>
             <TouchableOpacity

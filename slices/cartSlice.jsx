@@ -18,9 +18,10 @@ export const cartSlice = createSlice({
           restaurantName: action.payload.payload.restaurantName,
         };
       } else {
+        console.log("cartSlice else", newState);
         newState = {
           items: [
-            ...newState.cart.items.filter(
+            ...newState.items.filter(
               (item) => item.title !== action.payload.payload.title
             ),
           ],

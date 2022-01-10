@@ -8,7 +8,7 @@ const LogoutScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    await AsyncStorage.removeItem("token");
+    await AsyncStorage.removeItem("ubertoken");
     dispatch(setLogout(null));
     console.log("logout");
   }, []);

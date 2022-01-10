@@ -28,32 +28,40 @@ export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      {foods.map((food, index) => (
-        <View key={index}>
-          <View style={tw`flex-row justify-between my-5 pr-2 pl-5`}>
-            {hideCheckBox ? ( // checks if needs to hibe for OrderCompletedScreen
-              <></>
-            ) : (
-              <BouncyCheckbox
-                iconStyle={{
-                  borderColor: "lightgray",
-                  borderRadius: 50,
-                }}
-                fillColor="green"
-                onPress={(checkboxValue) => selectItem(food, checkboxValue)}
-                isChecked={isFoodInCart(food, cartItems)}
-              />
-            )}
-            <FoodInfo food={food} />
-            <FoodImage food={food} />
+      <View
+        style={
+          cartItems.items.length > 0
+            ? { marginBottom: 450 }
+            : { marginBottom: 350 }
+        }
+      >
+        {foods.map((food, index) => (
+          <View key={index}>
+            <View style={tw`flex-row justify-between my-5 pr-2 pl-5`}>
+              {hideCheckBox ? ( // checks if needs to hibe for OrderCompletedScreen
+                <></>
+              ) : (
+                <BouncyCheckbox
+                  iconStyle={{
+                    borderColor: "lightgray",
+                    borderRadius: 50,
+                  }}
+                  fillColor="green"
+                  onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+                  isChecked={isFoodInCart(food, cartItems.items)}
+                />
+              )}
+              <FoodInfo food={food} />
+              <FoodImage food={food} />
+            </View>
+            <Divider
+              width={0.5}
+              orientation="vertical"
+              style={{ marginHorizontal: 20 }}
+            />
           </View>
-          <Divider
-            width={0.5}
-            orientation="vertical"
-            style={{ marginHorizontal: 20 }}
-          />
-        </View>
-      ))}
+        ))}
+      </View>
     </ScrollView>
   );
 }

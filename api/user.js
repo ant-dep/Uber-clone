@@ -1,10 +1,10 @@
 import axios from "axios";
-import { config } from "../config";
+import { config } from "./config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const getData = async () => {
   try {
-    const value = await AsyncStorage.getItem("uber-token");
+    const value = await AsyncStorage.getItem("ubertoken");
     if (value !== null) {
       // value previously stored
       console.log(value);
@@ -24,7 +24,7 @@ export const saveUser = (data) => {
       return response.data;
     })
     .catch((err) => {
-      console.log("pas bon", err);
+      console.log("nope", err);
       return err;
     });
 };
@@ -34,6 +34,9 @@ export const loginUser = (data) => {
     .post(config.api_url + "/api/v1/user/login", data)
     .then((response) => {
       return response.data;
+    })
+    .catch((err) => {
+      return err;
     });
 };
 
@@ -46,21 +49,15 @@ export const checkToken = async () => {
     })
     .then((response) => {
       return response.data;
+    })
+    .catch((err) => {
+      return err;
     });
 };
 
 export const getOneUser = (id) => {
   return axios
     .get(config.api_url + "/api/v1/user/one/" + id)
-    .then((response) => {
-      return response.data;
-    });
-};
-
-export const sendNotif = (data, token) => {
-  console.log("dataToken", data, token);
-  return axios
-    .post(config.api_url + "/api/v1/notif", data)
     .then((response) => {
       return response.data;
     })
