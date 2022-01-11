@@ -6,8 +6,8 @@ import tw from "tailwind-react-native-classnames";
 import "intl";
 import "intl/locale-data/jsonp/en";
 import OrderItem from "./OrderItem";
-import firebase from "../../firebase";
 import LottieView from "lottie-react-native";
+import { saveOrder } from "../../api/orders";
 
 export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,21 +29,33 @@ export default function ViewCart({ navigation }) {
   const totalUSD = formatter.format(total);
 
   // PLACE ORDER FUNCTION
-  const addOrderToFireBase = () => {
+
+  // const addOrderToFireBase = () => {
+  //   setLoading(true);
+  //   const db = firebase.firestore();
+  //   db.collection("orders")
+  //     .add({
+  //       items: cartItems.items,
+  //       restaurantName: cartItems.restaurantName,
+  //       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+  //     })
+  //     .then(() => {
+  //       setTimeout(() => {
+  //         setLoading(false);
+  //         navigation.navigate("OrderCompletedScreen");
+  //       }, 2500);
+  //     });
+  // };
+
+  const addOrder = async () => {
     setLoading(true);
-    const db = firebase.firestore();
-    db.collection("orders")
-      .add({
-        items: cartItems.items,
-        restaurantName: cartItems.restaurantName,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(() => {
-        setTimeout(() => {
-          setLoading(false);
-          navigation.navigate("OrderCompletedScreen");
-        }, 2500);
-      });
+    const order = {
+      cart: cartItems.items,
+      restaurantName: cartItems.restaurantName,
+    };
+    const res = await saveOrder(order);
+    setLoading(false);
+    navigation.navigate("OrderCompletedScreen");
   };
 
   // MODAL

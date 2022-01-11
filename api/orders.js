@@ -1,5 +1,5 @@
 import axios from "axios";
-import { config } from "../config";
+import config from "./config";
 
 export const saveOrder = (data) => {
   return axios
@@ -11,7 +11,7 @@ export const saveOrder = (data) => {
 
 export const getOrdersByUser = (user_id) => {
   return axios
-    .get(config.api_url + "/api/v1/pub/byuser/" + user_id)
+    .get(config.api_url + "/api/v1/food/byuser/" + user_id)
     .then((response) => {
       return response.data;
     });

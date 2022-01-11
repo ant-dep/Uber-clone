@@ -17,6 +17,7 @@ export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
           ...item,
           restaurantName: restaurantName,
           checkboxValue: checkboxValue,
+          quantityInCart: 1,
         },
       })
     );

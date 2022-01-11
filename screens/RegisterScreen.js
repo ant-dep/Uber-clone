@@ -11,19 +11,18 @@ import {
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { saveUser } from "../api/user";
 import tw from "tailwind-react-native-classnames";
+import { Icon } from "react-native-elements/dist/icons/Icon";
 
 const Register = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [zip, setZip] = useState("");
-  const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [error, setError] = useState(false);
 
   const registerFunc = async () => {
@@ -32,9 +31,6 @@ const Register = (props) => {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      address: address,
-      zip: zip,
-      city: city,
       phone: phone,
       password: password,
     };
@@ -54,102 +50,104 @@ const Register = (props) => {
     }
   };
 
+  const hide = () => {
+    if (secureTextEntry) {
+      setSecureTextEntry(false);
+    } else {
+      setSecureTextEntry(true);
+    }
+  };
+
   return (
     <SafeAreaView style={tw`flex-1 items-center bg-white`}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <Text style={tw`text-3xl text-center font-bold my-5`}>Register</Text>
-        <ScrollView style={tw`pb-10`}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {error.error && <Text>{error.message}</Text>}
-          <View style={tw`pt-10 h-4/5 items-center justify-between`}>
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setFirstName(value);
-              }}
-              type="text"
-              placeholder="first name"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setLastName(value);
-              }}
-              type="text"
-              placeholder="last name"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setEmail(value);
-              }}
-              type="email"
-              keyboardType="email-address"
-              placeholder="email"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setAddress(value);
-              }}
-              type="text"
-              placeholder="address"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setZip(value);
-              }}
-              type="text"
-              keyboardType="numeric"
-              maxLength={5}
-              placeholder="zip code"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setCity(value);
-              }}
-              type="text"
-              placeholder="city"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setPhone(value);
-              }}
-              type="text"
-              keyboardType="phone-pad"
-              maxLength={11}
-              placeholder="phone"
-            />
+          <View style={tw`mb-5`}>
+            <View style={tw`items-center justify-between`}>
+              <TextInput
+                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
+                onChangeText={(value) => {
+                  setFirstName(value);
+                }}
+                type="text"
+                placeholder="first name"
+              />
+              <TextInput
+                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
+                onChangeText={(value) => {
+                  setLastName(value);
+                }}
+                type="text"
+                placeholder="last name"
+              />
+              <TextInput
+                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
+                onChangeText={(value) => {
+                  setEmail(value);
+                }}
+                type="email"
+                keyboardType="email-address"
+                placeholder="email"
+              />
+              <TextInput
+                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
+                onChangeText={(value) => {
+                  setPhone(value);
+                }}
+                type="text"
+                keyboardType="phone-pad"
+                maxLength={11}
+                placeholder="phone"
+              />
+            </View>
+            <View style={tw`pt-8 items-center justify-between`}>
+              <View
+                style={tw`w-60 h-10 my-2 pl-3 pb-2 border border-gray-200 rounded-sm relative`}
+              >
+                <TextInput
+                  style={tw` w-full h-full text-lg shadow`}
+                  onChangeText={(value) => {
+                    setPassword(value);
+                  }}
+                  secureTextEntry={secureTextEntry}
+                  placeholder="Password"
+                />
+                <TouchableOpacity
+                  style={tw`absolute right-2 bottom-2 z-10`}
+                  onPress={hide}
+                >
+                  <Icon
+                    name={secureTextEntry ? "eye" : "eye-slash"}
+                    type="font-awesome"
+                    color="lightgrey"
+                  />
+                </TouchableOpacity>
+              </View>
+              <TextInput
+                style={tw`w-60 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
+                onChangeText={(value) => {
+                  setConfirmPassword(value);
+                }}
+                secureTextEntry={secureTextEntry}
+                placeholder="Confirm Password"
+              />
+            </View>
           </View>
-          <View style={tw`pt-10 items-center justify-between`}>
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setPassword(value);
-              }}
-              secureTextEntry={true}
-              placeholder="Password"
-            />
-            <TextInput
-              style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-              onChangeText={(value) => {
-                setConfirmPassword(value);
-              }}
-              secureTextEntry={true}
-              placeholder="Confirm Password"
-            />
-          </View>
-        </ScrollView>
-        <View>
           <TouchableOpacity
             onPress={registerFunc}
-            style={tw`w-60 m-5 p-2 items-center bg-blue-400 rounded shadow-md`}
+            style={tw`w-60 mt-5 p-2 items-center bg-black rounded shadow-md`}
           >
             <Text style={tw`text-white text-lg font-bold`}>Register</Text>
           </TouchableOpacity>
-        </View>
+          <Text
+            onPress={() => props.navigation.navigate("LoginScreen")}
+            style={tw`mt-3 text-gray-500 text-center`}
+          >
+            Already registered ?
+          </Text>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
   );

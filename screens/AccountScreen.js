@@ -11,9 +11,13 @@ import { Divider } from "react-native-elements/dist/divider/Divider";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import tw from "tailwind-react-native-classnames";
 import BottomTabs from "../EatsComponents/Home/BottomTabs";
+import { useSelector } from "react-redux";
+import { selectUser } from "../slices/userSlice";
 
 const AccountScreen = ({ navigation }) => {
   const [activeMenu, setActiveMenu] = useState("Account");
+
+  const user = useSelector(selectUser);
 
   return (
     <SafeAreaView
@@ -25,16 +29,15 @@ const AccountScreen = ({ navigation }) => {
     >
       <View style={tw`flex-1 justify-between`}>
         <View>
-          <Icon icon="user-circle" text="John Doe" color="gray" />
+          <Icon
+            icon="user-circle"
+            text={`${user.infos.firstName} ${user.infos.lastName}`}
+            color="gray"
+          />
           <Divider width={1} />
         </View>
-        <ScrollView style={tw`w-full`}>
+        <ScrollView style={tw`w-full`} showsVerticalScrollIndicator={false}>
           <View style={tw`items-start`}>
-            <Icon
-              icon="receipt"
-              text="Orders"
-              onPress={() => navigation.navigate("OrdersScreen")}
-            />
             <Icon icon="shield-alt" text="COVID-19 security center" />
             <Icon icon="heart" text="Your Favorites" />
             <Icon icon="star" text="Restaurant Loyalty Membership" />
@@ -44,12 +47,16 @@ const AccountScreen = ({ navigation }) => {
             <Icon icon="tag" text="Sales" />
             <Icon icon="ticket-alt" text="Uber Eats Pass" />
             <Icon icon="shopping-bag" text="Deliver with Uber" />
-            <Icon icon="cog" text="Settings" />
+            <Icon
+              icon="cog"
+              text="Settings"
+              onPress={() => navigation.navigate("SettingScreen")}
+            />
             <IconBurger />
           </View>
           <View style={tw`ml-5 mb-28`}>
             <TouchableOpacity>
-              <Text style={tw`mb-10 mt-3`}>
+              <Text style={tw`mb-10 mt-3 text-xs italic`}>
                 How Uber and Uber Eats apps and website work
               </Text>
             </TouchableOpacity>
