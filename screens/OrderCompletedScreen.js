@@ -27,6 +27,8 @@ export default function OrderCompletedScreen({ navigation }) {
   const resetCartItems = () => dispatch(resetCart());
 
   // GETTING THE LAST ORDER FROM FIREBASE
+  // JUST SHOWING THAT IT CAN BE HANDLED WITH FIREBASE
+  // INSTEAD OF NODE.JS   :)
   useEffect(() => {
     const db = firebase.firestore();
     db.collection("orders")
@@ -41,7 +43,7 @@ export default function OrderCompletedScreen({ navigation }) {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate("EatsScreen");
+      navigation.navigate("OrdersScreen");
       resetCartItems();
     }, 7500);
   });

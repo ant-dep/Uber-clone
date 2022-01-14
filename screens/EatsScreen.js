@@ -21,7 +21,8 @@ const EatsScreen = ({ navigation }) => {
   const [activeMenu, setActiveMenu] = useState("Home");
 
   const getRestaurantsFromYelp = () => {
-    const yelpUrl = `https://proxy-cors-ap.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
+    const yelpUrlweb = `https://proxy-cors-ap.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
+    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
 
     const apiOptions = {
       headers: {
@@ -29,20 +30,21 @@ const EatsScreen = ({ navigation }) => {
       },
     };
 
-    return fetch(yelpUrl, apiOptions).then((res) =>
-      res.json().then((json) => {
-        {
-          json.businesses.filter((business) =>
-            business.transactions.includes(activeTab.toLowerCase())
-          ) == ""
-            ? setRestaurantData(json.businesses)
-            : setRestaurantData(
-                json.businesses.filter((business) =>
-                  business.transactions.includes(activeTab.toLowerCase())
-                )
-              );
-        }
-      })
+    return fetch(Platform.OS === "web" ? yelpUrlweb : yelpUrl, apiOptions).then(
+      (res) =>
+        res.json().then((json) => {
+          {
+            json.businesses.filter((business) =>
+              business.transactions.includes(activeTab.toLowerCase())
+            ) == ""
+              ? setRestaurantData(json.businesses)
+              : setRestaurantData(
+                  json.businesses.filter((business) =>
+                    business.transactions.includes(activeTab.toLowerCase())
+                  )
+                );
+          }
+        })
     );
   };
 

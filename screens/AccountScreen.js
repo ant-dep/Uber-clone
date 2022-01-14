@@ -38,11 +38,11 @@ const AccountScreen = ({ navigation }) => {
         </View>
         <ScrollView style={tw`w-full`} showsVerticalScrollIndicator={false}>
           <View style={tw`items-start`}>
-            <Icon icon="shield-alt" text="COVID-19 security center" />
+            <Icon icon="shield-alt" text="COVID-19 Safety Center" />
             <Icon icon="heart" text="Your Favorites" />
             <Icon icon="star" text="Restaurant Loyalty Membership" />
             <Icon icon="wallet" text="Wallet" />
-            <Icon icon="briefcase" text="Professionnal Preferences" />
+            <Icon icon="briefcase" text="Professional Preferences" />
             <Icon icon="plus-circle" text="Help" />
             <Icon icon="tag" text="Sales" />
             <Icon icon="ticket-alt" text="Uber Eats Pass" />

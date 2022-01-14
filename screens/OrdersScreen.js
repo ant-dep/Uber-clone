@@ -38,6 +38,7 @@ export default function OrdersScreen({ navigation }) {
         paddingTop: Platform.OS === "android" ? 25 : 0,
       }}
     >
+      {/* TOP MENU */}
       <View style={tw`flex-1 justify-between`}>
         <View style={tw`flex-row items-start ml-2 my-2 p-2`}>
           <Icon
@@ -50,14 +51,18 @@ export default function OrdersScreen({ navigation }) {
           <Text style={tw`text-xl ml-5`}>My Orders</Text>
         </View>
         <Divider width={1} />
+
+        {/* ORDERS */}
         {orders.length !== null ? (
           <ScrollView
             style={tw`w-full pl-5 py-5`}
             showsVerticalScrollIndicator={false}
           >
-            {orders.map((order, index) => (
-              <Order key={index} order={order} />
-            ))}
+            <View style={{ marginBottom: 70 }}>
+              {orders.map((order, index) => (
+                <Order key={index} order={order} />
+              ))}
+            </View>
           </ScrollView>
         ) : (
           <View style={tw`flex-1 items-center justify-center relative`}>
@@ -74,6 +79,7 @@ export default function OrdersScreen({ navigation }) {
             </TouchableOpacity>
           </View>
         )}
+
         <Divider width={1} />
         <BottomTabs
           navigation={navigation}

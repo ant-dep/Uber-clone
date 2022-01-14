@@ -60,8 +60,10 @@ export default function ViewCart({ navigation }) {
     const res = await saveOrder(order);
     if (res.status === 200) {
       console.log("addOrder", res);
-      setLoading(false);
-      navigation.navigate("OrderCompletedScreen");
+      setTimeout(() => {
+        setLoading(false);
+        navigation.navigate("OrderCompletedScreen");
+      }, 2500);
     } else {
       console.log("addOrder error", res.err);
       alert("A error occured");
@@ -104,6 +106,7 @@ export default function ViewCart({ navigation }) {
                   addOrder();
                   setModalVisible(false);
                 } else {
+                  setModalVisible(false);
                   navigation.navigate("LoginScreen");
                 }
               }}
