@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Image, SafeAreaView, View, Platform } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { APIKEY } from "@env";
@@ -17,6 +17,16 @@ const HomeScreen = () => {
     setTimeout(() => {
       setvisible(true);
     }, 2500);
+  }, []);
+
+  useEffect(() => {
+    if (Platform.OS === "web") {
+      setTimeout(() => {
+        alert(
+          "Sorry it's a bit broken on web. Please consider using EXPO app 📲 . You will get the most of React Native and a nice preview 🙌 !  https://expo.dev/@lhimiko/Uber-clone"
+        );
+      }, 3000);
+    }
   }, []);
 
   return (
@@ -52,37 +62,39 @@ const HomeScreen = () => {
               uri: "https://links.papareact.com/gzs",
             }}
           />
-          <GooglePlacesAutocomplete
-            styles={{
-              container: {
-                flex: 0,
-              },
-              textInput: {
-                fontSize: 18,
-                backgroundColor: "#F5F5F5",
-              },
-            }}
-            fetchDetails={true} // use Redux dispatch to store coordinates
-            onPress={(data, details = null) => {
-              dispatch(
-                setOrigin({
-                  location: details.geometry.location,
-                  description: data.description,
-                })
-              );
+          <View style={tw`my-auto w-full `}>
+            <GooglePlacesAutocomplete
+              styles={{
+                container: {
+                  flex: 0,
+                },
+                textInput: {
+                  fontSize: 18,
+                  backgroundColor: "#F5F5F5",
+                },
+              }}
+              fetchDetails={true} // use Redux dispatch to store coordinates
+              onPress={(data, details = null) => {
+                dispatch(
+                  setOrigin({
+                    location: details.geometry.location,
+                    description: data.description,
+                  })
+                );
 
-              dispatch(setDestination(null));
-            }}
-            returnKeyType={"search"}
-            placeholder="Where to pick you up ?"
-            query={{
-              key: APIKEY,
-              language: "en",
-            }}
-            nearbyPlacesAPI="GooglePlacesSearch"
-            debounce={400} // start searching every 400ms
-            enablePoweredByContainer={false} // hide the "Powered by Google"
-          />
+                dispatch(setDestination(null));
+              }}
+              returnKeyType={"search"}
+              placeholder="Where to pick you up ?"
+              query={{
+                key: APIKEY,
+                language: "en",
+              }}
+              nearbyPlacesAPI="GooglePlacesSearch"
+              debounce={400} // start searching every 400ms
+              enablePoweredByContainer={false} // hide the "Powered by Google"
+            />
+          </View>
 
           <NavOptions />
           <NavFavOrigin />

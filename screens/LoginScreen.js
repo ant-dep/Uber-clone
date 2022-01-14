@@ -74,10 +74,10 @@ const Login = (props) => {
             keyboardType="email-address"
           />
           <View
-            style={tw`w-60 h-12 my-2 pl-3 pb-2 border border-gray-200 rounded-sm relative`}
+            style={tw`w-60 h-12 my-2 border border-gray-200 rounded-sm relative`}
           >
             <TextInput
-              style={tw` w-full h-full text-lg shadow`}
+              style={tw`w-full h-full pl-3 pb-2 text-lg shadow`}
               onChangeText={(value) => {
                 setPassword(value);
               }}

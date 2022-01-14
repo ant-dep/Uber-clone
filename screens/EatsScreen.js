@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectOrigin } from "../slices/navSlice";
-import { SafeAreaView, ScrollView, View } from "react-native";
+import { SafeAreaView, ScrollView, View, Platform } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import HeaderTabs from "../EatsComponents/Home/HeaderTabs";
 import SearchBar from "../EatsComponents/Home/SearchBar";
@@ -21,7 +21,7 @@ const EatsScreen = ({ navigation }) => {
   const [activeMenu, setActiveMenu] = useState("Home");
 
   const getRestaurantsFromYelp = () => {
-    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
+    const yelpUrl = `https://proxy-cors-ap.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
 
     const apiOptions = {
       headers: {

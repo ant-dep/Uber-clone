@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Modal, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../slices/cartSlice";
+import { selectUser } from "../../slices/userSlice";
 import tw from "tailwind-react-native-classnames";
 import "intl";
 import "intl/locale-data/jsonp/en";
@@ -12,6 +13,7 @@ import { saveOrder } from "../../api/orders";
 export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const user = useSelector(selectUser);
 
   // GET ITEMS SELECTED
   const cartItems = useSelector(selectCart);
@@ -98,8 +100,12 @@ export default function ViewCart({ navigation }) {
             <TouchableOpacity
               style={tw`mt-3 bg-black flex-row justify-around items-center px-5 py-2 rounded-3xl w-72`}
               onPress={() => {
-                addOrder();
-                setModalVisible(false);
+                if (user.isLogged) {
+                  addOrder();
+                  setModalVisible(false);
+                } else {
+                  navigation.navigate("LoginScreen");
+                }
               }}
             >
               <Text style={tw`text-white text-lg font-semibold`}>Checkout</Text>
