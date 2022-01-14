@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector, useDispatch } from "react-redux";
 import tw from "tailwind-react-native-classnames";
-import { selectCart, resetCart } from "../slices/navSlice";
+import { selectCart, resetCart } from "../slices/cartSlice";
 import LottieView from "lottie-react-native";
 import MenuItem from "../EatsComponents/RestaurantDetail/MenuItem";
 import firebase from "../firebase";

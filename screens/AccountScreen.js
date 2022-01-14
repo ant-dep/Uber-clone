@@ -65,6 +65,7 @@ const AccountScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </ScrollView>
+        <Divider width={1} />
         <BottomTabs
           navigation={navigation}
           activeMenu={activeMenu}

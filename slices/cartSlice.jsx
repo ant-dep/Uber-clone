@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [],
   restaurantName: "",
+  restaurantImage: "",
 };
 
 export const cartSlice = createSlice({
@@ -16,6 +17,7 @@ export const cartSlice = createSlice({
         newState = {
           items: [...newState.items, action.payload.payload],
           restaurantName: action.payload.payload.restaurantName,
+          restaurantImage: action.payload.payload.restaurantImage,
         };
       } else {
         console.log("cartSlice else", newState);
@@ -26,6 +28,7 @@ export const cartSlice = createSlice({
             ),
           ],
           restaurantName: action.payload.payload.restaurantName,
+          restaurantImage: action.payload.payload.restaurantImage,
         };
       }
 
@@ -33,7 +36,9 @@ export const cartSlice = createSlice({
       return newState;
     },
     resetCart: (state) => {
-      state = { items: [], restaurantName: "" };
+      state.items = [];
+      state.restaurantName = "";
+      state.restaurantImage = "";
     },
   },
 });

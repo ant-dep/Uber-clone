@@ -25,7 +25,11 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
   return (
     <View style={tw`bg-white`}>
       <About route={route} />
-      <MenuItem restaurantName={route.params.name} foods={foods} />
+      <MenuItem
+        restaurantName={route.params.name}
+        restaurantImage={route.params.image}
+        foods={foods}
+      />
       <ViewCart navigation={navigation} />
     </View>
   );

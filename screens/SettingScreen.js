@@ -15,6 +15,7 @@ import tw from "tailwind-react-native-classnames";
 import { Divider } from "react-native-elements/dist/divider/Divider";
 import { Icon } from "react-native-elements/dist/icons/Icon";
 import { updateUser } from "../api/user";
+import { resetCart } from "../slices/cartSlice";
 
 const SettingScreen = (props) => {
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ const SettingScreen = (props) => {
 
   const logout = async () => {
     await AsyncStorage.removeItem("ubertoken");
+    dispatch(resetCart(null));
     dispatch(setLogout(null));
     console.log("logout");
   };

@@ -7,7 +7,12 @@ import tw from "tailwind-react-native-classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCart, setCart } from "../../slices/cartSlice";
 
-export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
+export default function MenuItem({
+  restaurantName,
+  restaurantImage,
+  foods,
+  hideCheckBox,
+}) {
   // UPDATE CART
   const dispatch = useDispatch();
   const selectItem = (item, checkboxValue) =>
@@ -16,6 +21,7 @@ export default function MenuItem({ restaurantName, foods, hideCheckBox }) {
         payload: {
           ...item,
           restaurantName: restaurantName,
+          restaurantImage: restaurantImage,
           checkboxValue: checkboxValue,
           quantityInCart: 1,
         },

@@ -52,10 +52,18 @@ export default function ViewCart({ navigation }) {
     const order = {
       cart: cartItems.items,
       restaurantName: cartItems.restaurantName,
+      restaurantImage: cartItems.restaurantImage,
     };
+    console.log("orderToSave", order);
     const res = await saveOrder(order);
-    setLoading(false);
-    navigation.navigate("OrderCompletedScreen");
+    if (res.status === 200) {
+      console.log("addOrder", res);
+      setLoading(false);
+      navigation.navigate("OrderCompletedScreen");
+    } else {
+      console.log("addOrder error", res.err);
+      alert("A error occured");
+    }
   };
 
   // MODAL
@@ -90,7 +98,7 @@ export default function ViewCart({ navigation }) {
             <TouchableOpacity
               style={tw`mt-3 bg-black flex-row justify-around items-center px-5 py-2 rounded-3xl w-72`}
               onPress={() => {
-                addOrderToFireBase();
+                addOrder();
                 setModalVisible(false);
               }}
             >
