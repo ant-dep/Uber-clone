@@ -63,7 +63,10 @@ export default function ViewCart({ navigation }) {
       console.log("addOrder", res);
       setTimeout(() => {
         setLoading(false);
-        navigation.navigate("OrderCompletedScreen");
+        navigation.navigate("OrderCompletedScreen", {
+          cartItems,
+          total,
+        });
       }, 2500);
     } else {
       console.log("addOrder error", res.err);

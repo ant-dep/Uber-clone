@@ -6,52 +6,39 @@ import tw from "tailwind-react-native-classnames";
 import { selectCart, resetCart } from "../slices/cartSlice";
 import LottieView from "lottie-react-native";
 import MenuItem from "../EatsComponents/RestaurantDetail/MenuItem";
-import firebase from "../firebase";
+// import firebase from "../firebase";
 import "intl";
 import "intl/locale-data/jsonp/en";
 
 export default function OrderCompletedScreen({ navigation }) {
-  const [lastOrder, setLastOrder] = useState({
-    // default item
-    items: [
-      {
-        title: "Lasagna",
-        image: "https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg",
-        description: "Yummi",
-        price: 13.6,
-      },
-    ],
-  });
-
-  const dispatch = useDispatch();
-  const resetCartItems = () => dispatch(resetCart());
+  // const [lastOrder, setLastOrder] = useState({});
 
   // GETTING THE LAST ORDER FROM FIREBASE
   // JUST SHOWING THAT IT CAN BE HANDLED WITH FIREBASE
   // INSTEAD OF NODE.JS   :)
-  useEffect(() => {
-    const db = firebase.firestore();
-    db.collection("orders")
-      .orderBy("createdAt", "desc")
-      .limit(1)
-      .onSnapshot((snapshot) => {
-        snapshot.docs.map((doc) => {
-          setLastOrder(doc.data());
-        });
-      });
-  }, []);
+  // useEffect(() => {
+  //   const db = firebase.firestore();
+  //   db.collection("orders")
+  //     .orderBy("createdAt", "desc")
+  //     .limit(1)
+  //     .onSnapshot((snapshot) => {
+  //       snapshot.docs.map((doc) => {
+  //         setLastOrder(doc.data());
+  //       });
+  //     });
+  // }, []);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate("OrdersScreen");
-      resetCartItems();
+      dispatch(resetCart());
     }, 7500);
   });
 
   // GETTING ITEMS AND CART TOTAL FROM REDUX
   const items = useSelector(selectCart);
   const cartItems = items.items;
-  const restaurantName = items.restaurantName;
   const total = cartItems
     .map((item) => Number(item.price))
     .reduce((prev, curr) => prev + curr, 0);
@@ -73,10 +60,10 @@ export default function OrderCompletedScreen({ navigation }) {
           loop={false}
         />
         <Text style={tw`text-xl font-bold`}>
-          Your order at {restaurantName} has been placed for {totalUSD}
+          Your order at {items.restaurantName} has been placed for {totalUSD}
         </Text>
         <ScrollView showsHorizontalScrollIndicator={false}>
-          <MenuItem foods={lastOrder.items} hideCheckBox={true} />
+          <MenuItem foods={cartItems} hideCheckBox={true} />
         </ScrollView>
         <LottieView
           style={tw`h-40 self-center mb-5`}
