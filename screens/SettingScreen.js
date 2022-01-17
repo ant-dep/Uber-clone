@@ -73,11 +73,9 @@ const SettingScreen = (props) => {
 
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-        paddingTop: Platform.OS === "android" ? 25 : 0,
-      }}
+      style={tw`flex-1 bg-white ${
+        Platform.OS === "android" ? "pt-16" : "pt-0"
+      }`}
     >
       <View style={tw`flex-1 justify-between`}>
         <View style={tw`flex-row items-start ml-2 my-2 p-2`}>

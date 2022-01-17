@@ -46,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
           ? "bg-white h-full"
           : "bg-black flex items-center justify-center h-full"
       }
-      ${Platform.OS === "android" ? "pt-12" : "pt-0"}`}
+      ${Platform.OS === "android" ? "pt-16" : "pt-0"}`}
     >
       {!visible && (
         <Image

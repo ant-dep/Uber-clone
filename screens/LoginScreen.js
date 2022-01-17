@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Keyboard,
   SafeAreaView,
   Text,
   TextInput,
@@ -61,10 +60,18 @@ const Login = (props) => {
   return (
     <SafeAreaView
       style={tw`flex-1 items-center bg-white ${
-        Platform.OS === "android" ? "pt-12" : "pt-0"
+        Platform.OS === "android" ? "pt-16" : "pt-0"
       }`}
     >
-      <Text style={tw`text-3xl text-center font-bold my-5`}>Login</Text>
+      <View style={tw`w-full relative`}>
+        <TouchableOpacity
+          style={tw`absolute left-4 top-6 z-50`}
+          onPress={() => props.navigation.goBack()}
+        >
+          <Icon name="arrowleft" type="antdesign" color="black" size={30} />
+        </TouchableOpacity>
+        <Text style={tw`text-3xl text-center font-bold my-5`}>Login</Text>
+      </View>
       <View style={tw`pt-10 h-4/6 items-center justify-between`}>
         {error.error && <Text>{error.message}</Text>}
         <View style={tw`pt-10 h-5/6 self-center`}>

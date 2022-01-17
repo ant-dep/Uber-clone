@@ -18,7 +18,7 @@ const EatsScreen = ({ navigation }) => {
   const origin = useSelector(selectOrigin);
   const [city, setCity] = useState(origin ? origin.description : "Miami Beach"); // Checks if there is an origin city or display Miami by default ;)
   const [activeTab, setActiveTab] = useState("Delivery");
-  const [activeMenu, setActiveMenu] = useState("Home");
+  const [activeMenu, setActiveMenu] = useState("Browse");
 
   const getRestaurantsFromYelp = () => {
     const yelpUrlweb = `https://proxy-cors-ap.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
@@ -54,11 +54,9 @@ const EatsScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-        paddingTop: Platform.OS === "android" ? 25 : 0,
-      }}
+      style={tw`flex-1 bg-white ${
+        Platform.OS === "android" ? "pt-16" : "pt-0"
+      }`}
     >
       <View style={tw`bg-white p-4`}>
         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />

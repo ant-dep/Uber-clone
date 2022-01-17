@@ -16,7 +16,7 @@ import { Divider } from "react-native-elements/dist/divider/Divider";
 import BottomTabs from "../EatsComponents/Home/BottomTabs";
 
 export default function OrdersScreen({ navigation }) {
-  const [activeMenu, setActiveMenu] = useState("Account");
+  const [activeMenu, setActiveMenu] = useState("Orders");
   const [orders, setOrders] = useState([]);
   const user = useSelector(selectUser);
 
@@ -32,25 +32,26 @@ export default function OrdersScreen({ navigation }) {
   console.log("orders", orders);
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-        paddingTop: Platform.OS === "android" ? 25 : 0,
-      }}
+      style={tw`flex-1 bg-white ${
+        Platform.OS === "android" ? "pt-16" : "pt-0"
+      }`}
     >
       {/* TOP MENU */}
       <View style={tw`flex-1 justify-between`}>
-        <View
-          style={tw`flex-row items-center justify-start ml-2 my-2 p-2 relative`}
-        >
-          <Icon
-            name="arrowleft"
-            type="antdesign"
-            color="black"
-            size={30}
-            onPress={() => navigation.navigate("EatsScreen")}
-          />
-          <Text style={tw`text-xl absolute top-2 left-36`}>My Orders</Text>
+        <View style={tw`ml-2 my-2 p-2 w-full relative`}>
+          <TouchableOpacity
+            style={tw`absolute left-4 top-2 z-50`}
+            onPress={() => props.navigation.goBack()}
+          >
+            <Icon
+              name="arrowleft"
+              type="antdesign"
+              color="black"
+              size={30}
+              onPress={() => navigation.navigate("EatsScreen")}
+            />
+          </TouchableOpacity>
+          <Text style={tw`text-xl text-center`}>My Orders</Text>
         </View>
         <Divider width={1} />
 
