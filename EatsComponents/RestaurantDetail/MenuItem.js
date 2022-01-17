@@ -10,6 +10,7 @@ import { selectCart, setCart } from "../../slices/cartSlice";
 export default function MenuItem({
   restaurantName,
   restaurantImage,
+  restaurantCity,
   foods,
   hideCheckBox,
 }) {
@@ -22,6 +23,7 @@ export default function MenuItem({
           ...item,
           restaurantName: restaurantName,
           restaurantImage: restaurantImage,
+          restaurantCity: restaurantCity,
           checkboxValue: checkboxValue,
           quantityInCart: 1,
         },

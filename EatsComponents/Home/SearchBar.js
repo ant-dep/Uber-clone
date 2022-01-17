@@ -5,8 +5,11 @@ import tw from "tailwind-react-native-classnames";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { APIKEY } from "@env";
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../../slices/navSlice";
 
 export default function SearchBar(props) {
+  const location = useSelector(selectOrigin);
   return (
     <View style={tw`mt-5 flex-row`}>
       <GooglePlacesAutocomplete
@@ -15,7 +18,7 @@ export default function SearchBar(props) {
           const city = data.description.split(",")[0]; // keep the first item (the city name)
           props.cityHandler(city);
         }}
-        placeholder="Search"
+        placeholder={location ? location.description : "Search"}
         styles={{
           textInput: tw`bg-gray-200 rounded-2xl font-semibold m-0`,
           textInputContainer: tw`bg-gray-200 rounded-full flex-row items-center mr-1`,

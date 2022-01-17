@@ -55,6 +55,7 @@ export default function ViewCart({ navigation }) {
       cart: cartItems.items,
       restaurantName: cartItems.restaurantName,
       restaurantImage: cartItems.restaurantImage,
+      restaurantCity: cartItems.restaurantCity,
     };
     console.log("orderToSave", order);
     const res = await saveOrder(order);

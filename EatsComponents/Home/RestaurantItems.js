@@ -39,6 +39,7 @@ const RestaurantItem = ({ restaurantData }) => {
   const navigation = useNavigation();
 
   const handlePress = (item) => {
+    console.log("item clicked", item);
     navigation.navigate("RestaurantDetailsScreen", {
       name: item.name,
       image: item.image_url,
@@ -46,6 +47,7 @@ const RestaurantItem = ({ restaurantData }) => {
       reviews: item.review_count,
       rating: item.rating,
       categories: item.categories,
+      city: item.location.city,
     });
   };
 

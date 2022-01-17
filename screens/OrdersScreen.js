@@ -28,8 +28,8 @@ export default function OrdersScreen({ navigation }) {
     };
     getOrders();
   }, []);
-  console.log("orders", orders);
 
+  console.log("orders", orders);
   return (
     <SafeAreaView
       style={{
@@ -40,7 +40,9 @@ export default function OrdersScreen({ navigation }) {
     >
       {/* TOP MENU */}
       <View style={tw`flex-1 justify-between`}>
-        <View style={tw`flex-row items-start ml-2 my-2 p-2`}>
+        <View
+          style={tw`flex-row items-center justify-start ml-2 my-2 p-2 relative`}
+        >
           <Icon
             name="arrowleft"
             type="antdesign"
@@ -48,19 +50,19 @@ export default function OrdersScreen({ navigation }) {
             size={30}
             onPress={() => navigation.navigate("EatsScreen")}
           />
-          <Text style={tw`text-xl ml-5`}>My Orders</Text>
+          <Text style={tw`text-xl absolute top-2 left-36`}>My Orders</Text>
         </View>
         <Divider width={1} />
 
         {/* ORDERS */}
-        {orders.length !== null ? (
+        {orders?.length !== null ? (
           <ScrollView
             style={tw`w-full pl-5 py-5`}
             showsVerticalScrollIndicator={false}
           >
             <View style={{ marginBottom: 70 }}>
-              {orders.map((order, index) => (
-                <Order key={index} order={order} />
+              {orders?.map((item, index) => (
+                <Order key={index} order={item} />
               ))}
             </View>
           </ScrollView>

@@ -59,31 +59,28 @@ const Login = (props) => {
   };
 
   return (
-    <SafeAreaView style={tw`flex-1 items-center bg-white`}>
+    <SafeAreaView
+      style={tw`flex-1 items-center bg-white ${
+        Platform.OS === "android" ? "pt-12" : "pt-0"
+      }`}
+    >
       <Text style={tw`text-3xl text-center font-bold my-5`}>Login</Text>
       <View style={tw`pt-10 h-4/6 items-center justify-between`}>
         {error.error && <Text>{error.message}</Text>}
         <View style={tw`pt-10 h-5/6 self-center`}>
           <TextInput
-            style={tw`w-60 h-12 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow`}
+            style={tw`w-60 h-12 my-2 pl-3 border border-gray-200 rounded-sm text-lg`}
             onChangeText={(value) => {
               setEmail(value);
             }}
             type="email"
             placeholder="email"
             keyboardType="email-address"
+            returnKeyType="next"
           />
           <View
-            style={tw`w-60 h-12 my-2 border border-gray-200 rounded-sm relative`}
+            style={tw`w-60 h-12 my-2 pl-3 border border-gray-200 rounded-sm relative`}
           >
-            <TextInput
-              style={tw`w-full h-full pl-3 pb-2 text-lg shadow`}
-              onChangeText={(value) => {
-                setPassword(value);
-              }}
-              secureTextEntry={secureTextEntry}
-              placeholder="Password"
-            />
             <TouchableOpacity
               style={tw`absolute right-2 bottom-3 z-10`}
               onPress={hide}
@@ -94,6 +91,15 @@ const Login = (props) => {
                 color="lightgrey"
               />
             </TouchableOpacity>
+            <TextInput
+              style={tw`w-full h-full text-lg`}
+              onChangeText={(value) => {
+                setPassword(value);
+              }}
+              secureTextEntry={secureTextEntry}
+              placeholder="Password"
+              returnKeyType="send"
+            />
           </View>
         </View>
       </View>

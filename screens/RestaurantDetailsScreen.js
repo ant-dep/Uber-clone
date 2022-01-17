@@ -28,6 +28,7 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
       <MenuItem
         restaurantName={route.params.name}
         restaurantImage={route.params.image}
+        restaurantCity={route.params.city}
         foods={foods}
       />
       <ViewCart navigation={navigation} />

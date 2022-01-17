@@ -4,6 +4,7 @@ const initialState = {
   items: [],
   restaurantName: "",
   restaurantImage: "",
+  restaurantCity: "",
 };
 
 export const cartSlice = createSlice({
@@ -18,6 +19,7 @@ export const cartSlice = createSlice({
           items: [...newState.items, action.payload.payload],
           restaurantName: action.payload.payload.restaurantName,
           restaurantImage: action.payload.payload.restaurantImage,
+          restaurantCity: action.payload.payload.restaurantCity,
         };
       } else {
         console.log("cartSlice else", newState);
@@ -29,6 +31,7 @@ export const cartSlice = createSlice({
           ],
           restaurantName: action.payload.payload.restaurantName,
           restaurantImage: action.payload.payload.restaurantImage,
+          restaurantCity: action.payload.payload.restaurantCity,
         };
       }
 
@@ -39,6 +42,7 @@ export const cartSlice = createSlice({
       state.items = [];
       state.restaurantName = "";
       state.restaurantImage = "";
+      state.restaurantCity = "";
     },
   },
 });

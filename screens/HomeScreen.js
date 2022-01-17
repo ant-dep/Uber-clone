@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Image, SafeAreaView, View, Platform } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { APIKEY } from "@env";
-import { useDispatch } from "react-redux";
-import { setDestination, setOrigin } from "../slices/navSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setDestination, setOrigin, selectOrigin } from "../slices/navSlice";
+import { selectUser } from "../slices/userSlice";
 import NavOptions from "../DriveComponents/NavOptions";
 import NavFavOrigin from "../DriveComponents/NavFavOrigin";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const location = useSelector(selectOrigin);
   const [visible, setvisible] = useState(false);
 
   // 2.5 sec Loader
@@ -35,7 +45,8 @@ const HomeScreen = () => {
         visible
           ? "bg-white h-full"
           : "bg-black flex items-center justify-center h-full"
-      }`}
+      }
+      ${Platform.OS === "android" ? "pt-12" : "pt-0"}`}
     >
       {!visible && (
         <Image
@@ -51,7 +62,17 @@ const HomeScreen = () => {
         />
       )}
       {visible && (
-        <View style={tw`p-5`}>
+        <View style={tw`p-5 relative`}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(
+                user.isLogged ? "AccountScreen" : "LoginScreen"
+              )
+            }
+            style={[tw`absolute top-2 right-6 z-50 rounded-full bg-gray-100`]}
+          >
+            <FontAwesome5 name="user-circle" size={35} color="lightgrey" />
+          </TouchableOpacity>
           <Image
             style={{
               width: 100,
@@ -85,7 +106,13 @@ const HomeScreen = () => {
                 dispatch(setDestination(null));
               }}
               returnKeyType={"search"}
-              placeholder="Where to pick you up ?"
+              placeholder={
+                location
+                  ? location.description.length > 42
+                    ? location.description.substring(0, 39) + "..."
+                    : location.description
+                  : "Where to pick you up ?"
+              }
               query={{
                 key: APIKEY,
                 language: "en",

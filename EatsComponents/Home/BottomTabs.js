@@ -24,7 +24,9 @@ export default function BottomTabs({ navigation, ...props }) {
         text="Browse"
         activeMenu={props.activeMenu}
         setActiveMenu={props.setActiveMenu}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate("EatsScreen");
+        }}
       />
       <Icon
         icon="receipt"

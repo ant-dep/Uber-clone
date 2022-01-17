@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { saveUser } from "../api/user";
 import tw from "tailwind-react-native-classnames";
 import { Icon } from "react-native-elements/dist/icons/Icon";
@@ -59,96 +58,96 @@ const Register = (props) => {
   };
 
   return (
-    <SafeAreaView style={tw`flex-1 items-center bg-white`}>
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <Text style={tw`text-3xl text-center font-bold my-5`}>Register</Text>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {error.error && <Text>{error.message}</Text>}
-          <View style={tw`mb-5`}>
-            <View style={tw`items-center justify-between`}>
-              <TextInput
-                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-                onChangeText={(value) => {
-                  setFirstName(value);
-                }}
-                type="text"
-                placeholder="first name"
+    <SafeAreaView
+      style={tw`flex-1 items-center bg-white ${
+        Platform.OS === "android" ? "pt-12" : "pt-0"
+      }`}
+    >
+      <Text style={tw`text-3xl text-center font-bold my-5`}>Register</Text>
+      {error.error && <Text>{error.message}</Text>}
+      <View style={tw`pt-10 h-4/6 items-center`}>
+        <View style={tw`items-center justify-between`}>
+          <TextInput
+            style={tw`w-60 my-2 pl-3 py-1 border border-gray-200 rounded-sm text-lg `}
+            onChangeText={(value) => {
+              setFirstName(value);
+            }}
+            type="text"
+            placeholder="first name"
+          />
+          <TextInput
+            style={tw`w-60 my-2 pl-3 py-1 border border-gray-200 rounded-sm text-lg `}
+            onChangeText={(value) => {
+              setLastName(value);
+            }}
+            type="text"
+            placeholder="last name"
+          />
+          <TextInput
+            style={tw`w-60 my-2 pl-3 py-1 border border-gray-200 rounded-sm text-lg `}
+            onChangeText={(value) => {
+              setEmail(value);
+            }}
+            type="email"
+            keyboardType="email-address"
+            placeholder="email"
+          />
+          <TextInput
+            style={tw`w-60 my-2 pl-3 py-1 border border-gray-200 rounded-sm text-lg `}
+            onChangeText={(value) => {
+              setPhone(value);
+            }}
+            type="text"
+            keyboardType="phone-pad"
+            maxLength={11}
+            placeholder="phone"
+          />
+        </View>
+        <View style={tw`pt-8 items-center justify-between`}>
+          <View
+            style={tw`w-60 h-10 pl-3 my-2 border border-gray-200 rounded-sm relative`}
+          >
+            <TouchableOpacity
+              style={tw`absolute right-2 bottom-2 z-10`}
+              onPress={hide}
+            >
+              <Icon
+                name={secureTextEntry ? "eye" : "eye-slash"}
+                type="font-awesome"
+                color="lightgrey"
               />
-              <TextInput
-                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-                onChangeText={(value) => {
-                  setLastName(value);
-                }}
-                type="text"
-                placeholder="last name"
-              />
-              <TextInput
-                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-                onChangeText={(value) => {
-                  setEmail(value);
-                }}
-                type="email"
-                keyboardType="email-address"
-                placeholder="email"
-              />
-              <TextInput
-                style={tw`w-60 my-2 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-                onChangeText={(value) => {
-                  setPhone(value);
-                }}
-                type="text"
-                keyboardType="phone-pad"
-                maxLength={11}
-                placeholder="phone"
-              />
-            </View>
-            <View style={tw`pt-8 items-center justify-between`}>
-              <View
-                style={tw`w-60 h-10 my-2 pl-3 pb-2 border border-gray-200 rounded-sm relative`}
-              >
-                <TextInput
-                  style={tw` w-full h-full text-lg shadow`}
-                  onChangeText={(value) => {
-                    setPassword(value);
-                  }}
-                  secureTextEntry={secureTextEntry}
-                  placeholder="Password"
-                />
-                <TouchableOpacity
-                  style={tw`absolute right-2 bottom-2 z-10`}
-                  onPress={hide}
-                >
-                  <Icon
-                    name={secureTextEntry ? "eye" : "eye-slash"}
-                    type="font-awesome"
-                    color="lightgrey"
-                  />
-                </TouchableOpacity>
-              </View>
-              <TextInput
-                style={tw`w-60 pl-3 pb-2 border border-gray-200 rounded-sm text-lg shadow `}
-                onChangeText={(value) => {
-                  setConfirmPassword(value);
-                }}
-                secureTextEntry={secureTextEntry}
-                placeholder="Confirm Password"
-              />
-            </View>
+            </TouchableOpacity>
+            <TextInput
+              style={tw`w-full h-full text-lg`}
+              onChangeText={(value) => {
+                setPassword(value);
+              }}
+              secureTextEntry={secureTextEntry}
+              placeholder="Password"
+            />
           </View>
-          <TouchableOpacity
-            onPress={registerFunc}
-            style={tw`w-60 mt-5 p-2 items-center bg-black rounded shadow-md`}
-          >
-            <Text style={tw`text-white text-lg font-bold`}>Register</Text>
-          </TouchableOpacity>
-          <Text
-            onPress={() => props.navigation.navigate("LoginScreen")}
-            style={tw`mt-3 text-gray-500 text-center`}
-          >
-            Already registered ?
-          </Text>
-        </ScrollView>
-      </TouchableWithoutFeedback>
+          <TextInput
+            style={tw`w-60 pl-3 pb-2 border border-gray-200 rounded-sm text-lg `}
+            onChangeText={(value) => {
+              setConfirmPassword(value);
+            }}
+            secureTextEntry={secureTextEntry}
+            placeholder="Confirm Password"
+          />
+        </View>
+      </View>
+      <TouchableOpacity
+        onPress={registerFunc}
+        style={tw`w-60 mt-5 p-2 items-center bg-black rounded shadow-md`}
+      >
+        <Text style={tw`text-white text-lg font-bold`}>Register</Text>
+      </TouchableOpacity>
+      <Text
+        onPress={() => props.navigation.navigate("LoginScreen")}
+        style={tw`mt-3 text-gray-500 text-center`}
+      >
+        Already registered ?
+      </Text>
     </SafeAreaView>
   );
 };
