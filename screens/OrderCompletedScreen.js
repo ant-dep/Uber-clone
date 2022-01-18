@@ -6,28 +6,10 @@ import tw from "tailwind-react-native-classnames";
 import { selectCart, resetCart } from "../slices/cartSlice";
 import LottieView from "lottie-react-native";
 import MenuItem from "../EatsComponents/RestaurantDetail/MenuItem";
-// import firebase from "../firebase";
 import "intl";
 import "intl/locale-data/jsonp/en";
 
 export default function OrderCompletedScreen({ navigation }) {
-  // const [lastOrder, setLastOrder] = useState({});
-
-  // GETTING THE LAST ORDER FROM FIREBASE
-  // JUST SHOWING THAT IT CAN BE HANDLED WITH FIREBASE
-  // INSTEAD OF NODE.JS   :)
-  // useEffect(() => {
-  //   const db = firebase.firestore();
-  //   db.collection("orders")
-  //     .orderBy("createdAt", "desc")
-  //     .limit(1)
-  //     .onSnapshot((snapshot) => {
-  //       snapshot.docs.map((doc) => {
-  //         setLastOrder(doc.data());
-  //       });
-  //     });
-  // }, []);
-
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {

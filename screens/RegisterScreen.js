@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import {
-  Keyboard,
   SafeAreaView,
   Text,
   TextInput,
   View,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
 import { saveUser } from "../api/user";
 import tw from "tailwind-react-native-classnames";

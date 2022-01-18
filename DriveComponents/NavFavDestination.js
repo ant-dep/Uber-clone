@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { setDestination } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";

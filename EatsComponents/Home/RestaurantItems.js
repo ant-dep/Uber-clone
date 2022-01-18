@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 
 // Just to have someting on main page before any search
+// TODO : ask for location permission and load local restaurants
 export const localRestaurants = [
   {
     name: "Beachside Bar",

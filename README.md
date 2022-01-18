@@ -11,15 +11,16 @@ https://uber-clone-18c94.web.app
 
 <h2>FRONTEND</h2></br>
 
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.apollo-formation.com%2Fwp-content%2Fuploads%2Freact-native-logo-1-216x250.png&f=1&nofb=1" width="100" alt="React Native logo"> <img src="https://javascript.tutorialhorizon.com/files/2016/06/redux-logo.png" width="100" alt="Redux logo"> <img src="https://media.zeemly.com/zeemly/product/tailwind-css.png" width="115" alt="Tailwind CSS logo"></br></br></br></br></br>
-
-<hr class="line"></br>
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.apollo-formation.com%2Fwp-content%2Fuploads%2Freact-native-logo-1-216x250.png&f=1&nofb=1" width="100" alt="React Native logo"> <img src="https://javascript.tutorialhorizon.com/files/2016/06/redux-logo.png" width="100" alt="Redux logo"> <img src="https://media.zeemly.com/zeemly/product/tailwind-css.png" width="115" alt="Tailwind CSS logo"></br></br></br></br>
 
 <h2>BACKEND</h2></br>
 
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fappdevcon.nl%2Fwp-content%2Fuploads%2F2019%2F02%2Flogo_lockup_firebase_horizontal.png&f=1&nofb=1" width="200" alt="Firebase logo"></br></br></br></br></br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png" width="150" alt="Node JS logo"> <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png" width="150" alt="MySQL logo"></br></br></br></br></br>
 
-<hr class="line"></br>
+<h2>HOSTING</h2></br>
+
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fappdevcon.nl%2Fwp-content%2Fuploads%2F2019%2F02%2Flogo_lockup_firebase_horizontal.png&f=1&nofb=1" width="200" alt="Firebase logo"> <img src="https://miro.medium.com/max/512/1*3o8TOSojT64ChGpjop0USA.png" width="150" alt="Expo logo"></br></br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Heroku_logo.svg/2560px-Heroku_logo.svg.png" width="200" alt="Heroku logo"></br></br></br></br>
 
 <h2>FEATURES</h2></br>
 
@@ -31,14 +32,15 @@ https://uber-clone-18c94.web.app
 👉 <em>Tailwind Css</em></br>
 👉 <em>Yelp API</em></br>
 👉 <em>Google Autocomplete, Map & TravelTimeInfo</em></br>
-👉 <em>Firebase hosting and Firestore database</em>
+👉 <em>Node.JS Backend</em></br>
+👉 <em>MySQL Database</em></br>
+👉 <em>Firebase and Expo Frontend hosting</em></br>
+👉 <em>Heroku Backend hosting</em></br>
 
 </br></br></br>
 
-<hr class="line">
-
-<img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/HomeScreen-page.png?raw=true" alt="Home page" width="180"> <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Destination-choice-page.png?raw=true" alt="Destination Choice page" width="180"> <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Car-choice-page.png?raw=true" alt="Car options page" width="180"> <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Confirmation-page.png?raw=true" alt="Confirmation page" width="180">
+<img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/HomeScreen-page.png?raw=true" alt="Home page" width="180"> <img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/Destination-choice-page.png?raw=true" alt="Destination Choice page" width="180"> <img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/Car-choice-page.png?raw=true" alt="Car options page" width="180"> <img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/Confirmation-page.png?raw=true" alt="Confirmation page" width="180">
 
 </br>
 
-<img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/EatsScreen-page.png?raw=true" alt="Eats page" width="180"> <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/Restaurant-page.png?raw=true" alt="Restaurant page" width="180"> <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/ViewCart-modal.png?raw=true" alt="ViewCart modal" width="180"> <img src="https://github.com/lHimiko/Uber-clone/blob/main/Sample%20UI/OrderCompletedScreen-page.png?raw=true" alt="OrderCompletedScreen page" width="180">
+<img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/EatsScreen-page.png?raw=true" alt="Eats page" width="180"> <img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/Restaurant-page.png?raw=true" alt="Restaurant page" width="180"> <img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/ViewCart-modal.png?raw=true" alt="ViewCart modal" width="180"> <img src="https://github.com/ant-dep/Uber-clone/blob/main/Sample%20UI/OrderCompletedScreen-page.png?raw=true" alt="OrderCompletedScreen page" width="180">

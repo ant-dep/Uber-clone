@@ -32,23 +32,6 @@ export default function ViewCart({ navigation }) {
 
   // PLACE ORDER FUNCTION
 
-  // const addOrderToFireBase = () => {
-  //   setLoading(true);
-  //   const db = firebase.firestore();
-  //   db.collection("orders")
-  //     .add({
-  //       items: cartItems.items,
-  //       restaurantName: cartItems.restaurantName,
-  //       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-  //     })
-  //     .then(() => {
-  //       setTimeout(() => {
-  //         setLoading(false);
-  //         navigation.navigate("OrderCompletedScreen");
-  //       }, 2500);
-  //     });
-  // };
-
   const addOrder = async () => {
     setLoading(true);
     const order = {
